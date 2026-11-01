@@ -26,10 +26,24 @@ export default function TeamPage() {
       tag: "FMCG",
     },
     {
-      name: "Clean Energy & Grid Systems",
-      role: "Sustainable Infrastructure & Storage",
-      desc: "Renewable energy pioneers developing high-density solid-state battery reserves and intelligent decentralized distribution.",
+      name: "Next-Generation Energy",
+      role: "Green Hydrogen • Advanced Nuclear Research",
+      desc: "Exploring green hydrogen, compact hydrogen fuel cells and thorium-based nuclear energy for a resilient energy future.",
       tag: "ENERGY",
+      subItems: [
+        {
+          title: "Green Hydrogen",
+          desc: "Renewable-powered hydrogen production and storage.",
+        },
+        {
+          title: "Compact Hydrogen Fuel Cells",
+          desc: "Exploring modular power for mobility, backup and distributed energy.",
+        },
+        {
+          title: "Thorium & Nuclear Batteries",
+          desc: "Future research interests in thorium fuel cycles and radioisotope power systems.",
+        },
+      ],
     },
   ];
 
@@ -108,6 +122,25 @@ export default function TeamPage() {
                     <p className="text-sm text-neutral-400 font-light leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
                       {item.desc}
                     </p>
+
+                    {item.subItems && (
+                      <div className="mt-8 space-y-6 pt-2">
+                        {item.subItems.map((sub, sIdx) => (
+                          <div key={sIdx} className="border-t border-white/10 pt-4">
+                            <div className="w-8 h-[2px] bg-[#00BFFF] mb-3" />
+                            <h3
+                              className="text-base sm:text-lg text-white font-normal mb-1.5"
+                              style={{ fontFamily: "'Montserrat', sans-serif" }}
+                            >
+                              {sub.title}
+                            </h3>
+                            <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+                              {sub.desc}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               );

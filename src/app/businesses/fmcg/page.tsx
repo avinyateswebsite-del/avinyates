@@ -331,76 +331,86 @@ export default function FMCGPage() {
 
         {/* THE 3 CORE PILLARS: Horizontal 3-Column Layout Matching Template */}
         <section id="pillars" className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 pt-8 mb-20 sm:mb-24">
-          {/* Pillar 1: Zero Preservatives */}
+          {/* Pillar 1: Smart Frying */}
           <div className="flex items-start gap-4 sm:gap-5">
             <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
-              <Leaf className="w-9 h-9 stroke-[1.5]" />
+              <svg className="w-9 h-9 text-[#00BFFF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                <path d="M12 9v6m-3-3l3 3 3-3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </div>
             <div>
               <span
                 className="text-[11px] font-mono tracking-[0.24em] text-[#00BFFF] uppercase block mb-1"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                01 / PURITY
+                01 / SMART FRYING
               </span>
               <h3
                 className="text-xl sm:text-2xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                Zero Preservatives
+                Big Crunch. Less Oil.*
               </h3>
               <p className="text-xs sm:text-[13px] text-neutral-400 font-light leading-relaxed">
-                Clean aseptic technology and sterile freshness preservation without chemical stabilizers, nitrates, or artificial shelf-life extenders.
+                Advanced vacuum frying and effective de-oiling transform pineapple, jackfruit and sweet potato into irresistibly crisp bites with less oil than conventional frying.*
               </p>
             </div>
           </div>
 
-          {/* Pillar 2: Zero Chemicals */}
+          {/* Pillar 2: Natural Character */}
           <div className="flex items-start gap-4 sm:gap-5">
             <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
-              <FlaskConical className="w-9 h-9 stroke-[1.5]" />
+              <Leaf className="w-9 h-9 stroke-[1.8] text-[#00BFFF]" />
             </div>
             <div>
               <span
                 className="text-[11px] font-mono tracking-[0.24em] text-[#00BFFF] uppercase block mb-1"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                02 / NATURE
+                02 / NATURAL CHARACTER
               </span>
               <h3
                 className="text-xl sm:text-2xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                Zero Chemicals
+                Lower Heat. Louder Flavour.
               </h3>
               <p className="text-xs sm:text-[13px] text-neutral-400 font-light leading-relaxed">
-                100% natural, farm-origin ingredients strictly devoid of synthetic additives, toxic pesticides, artificial dyes, or petroleum fillers.
+                Our reduced-pressure process helps preserve the distinctive flavours and vibrant colours of tropical fruits and wholesome roots.
               </p>
             </div>
           </div>
 
-          {/* Pillar 3: Zero Added Sugar */}
+          {/* Pillar 3: Innovation */}
           <div className="flex items-start gap-4 sm:gap-5">
             <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
-              <Heart className="w-9 h-9 stroke-[1.5]" />
+              <FlaskConical className="w-9 h-9 stroke-[1.8] text-[#00BFFF]" />
             </div>
             <div>
               <span
                 className="text-[11px] font-mono tracking-[0.24em] text-[#00BFFF] uppercase block mb-1"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                03 / HEALTH
+                03 / INNOVATION
               </span>
               <h3
                 className="text-xl sm:text-2xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                Zero Added Sugar
+                Nature&apos;s Variety. Reimagined.
               </h3>
               <p className="text-xs sm:text-[13px] text-neutral-400 font-light leading-relaxed">
-                Naturally delicious nourishment relying solely on raw botanical sweetness and whole fruit nectar—never sucrose, syrups, or artificial substitutes.
+                Extraordinary fruits and roots meet smarter frying technology&mdash;bringing tropical flavour and an exciting crunch to every Snackys bite.
               </p>
             </div>
+          </div>
+
+          {/* Disclaimer Footnote */}
+          <div className="md:col-span-3 pt-2">
+            <p className="text-[11px] sm:text-xs text-neutral-500 font-light tracking-wide">
+              *Less-oil claim subject to comparative finished-product testing.
+            </p>
           </div>
         </section>
       </main>

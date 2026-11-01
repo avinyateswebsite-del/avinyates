@@ -3,7 +3,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Globe, Check } from "lucide-react";
+import { SITE_LANGUAGES, getStoredLanguage, setSiteLanguage } from "@/utils/translator";
 
 interface NavbarProps {
   currentPath?: string;
@@ -11,19 +12,46 @@ interface NavbarProps {
 
 export default function Navbar({ currentPath = "/" }: NavbarProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [currentLang, setCurrentLang] = useState("en");
 
-  // Close dropdown on outside click
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const langDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Sync stored language and listen for external changes
+  useEffect(() => {
+    setCurrentLang(getStoredLanguage());
+    const handleLangChange = (e: Event) => {
+      const custom = e as CustomEvent<string>;
+      if (custom.detail) setCurrentLang(custom.detail);
+    };
+    window.addEventListener("languageChange", handleLangChange);
+    return () => window.removeEventListener("languageChange", handleLangChange);
+  }, []);
+
+  // Close dropdowns on outside click
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setDropdownOpen(false);
       }
+      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
+        setLangDropdownOpen(false);
+      }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const activeLang = SITE_LANGUAGES.find((l) => l.code === currentLang) || SITE_LANGUAGES[0];
+
+  const handleSelectLanguage = (code: string) => {
+    setCurrentLang(code);
+    setLangDropdownOpen(false);
+    setMobileMenuOpen(false);
+    setSiteLanguage(code);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 sm:px-10 md:px-14 lg:px-18 xl:px-20 pt-6 sm:pt-7 md:pt-9 lg:pt-10 flex items-center justify-between pointer-events-auto bg-transparent transition-all">
@@ -62,9 +90,9 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
         </div>
       </Link>
 
-      {/* Desktop Nav: Our Team & Businesses (with Dropdown) */}
+      {/* Desktop Nav: Our Team, Businesses & Multi-Language Selector */}
       <nav
-        className="hidden md:flex items-center gap-8 lg:gap-14 xl:gap-16 text-sm md:text-[16px] lg:text-[18px] xl:text-[19px] font-normal drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
+        className="hidden md:flex items-center gap-6 lg:gap-10 xl:gap-12 text-sm md:text-[15px] lg:text-[17px] xl:text-[18px] font-normal drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
         style={{ fontFamily: "'Montserrat', sans-serif" }}
       >
         {/* Our Team Link */}
@@ -84,7 +112,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
         >
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-2 text-neutral-200 hover:text-white transition-colors duration-200 tracking-wide whitespace-nowrap focus:outline-none"
+            className="flex items-center gap-2 text-neutral-200 hover:text-white transition-colors duration-200 tracking-wide whitespace-nowrap focus:outline-none cursor-pointer"
             aria-expanded={dropdownOpen}
           >
             <span>Businesses</span>
@@ -95,9 +123,9 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
             />
           </button>
 
-          {/* Dropdown Menu */}
+          {/* Businesses Dropdown Menu */}
           {dropdownOpen && (
-            <div className="absolute right-0 top-full mt-2 min-w-[200px] z-50 animate-in fade-in slide-in-from-top-1 duration-200 rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] bg-black/80 backdrop-blur-2xl">
+            <div className="absolute right-0 top-full mt-2 min-w-[220px] z-50 animate-in fade-in slide-in-from-top-1 duration-200 rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] bg-black/85 backdrop-blur-2xl">
               {/* Cyan top accent line */}
               <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#00BFFF]/60 to-transparent" />
 
@@ -142,6 +170,56 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
           )}
         </div>
 
+        {/* Global Multi-Language Selector Dropdown */}
+        <div ref={langDropdownRef} className="relative py-2">
+          <button
+            onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 hover:border-[#00BFFF] bg-black/50 hover:bg-[#00BFFF]/10 text-xs sm:text-sm text-neutral-200 hover:text-white transition-all duration-300 cursor-pointer shadow-lg shadow-black/60"
+            aria-label="Select website language"
+            aria-expanded={langDropdownOpen}
+          >
+            <Globe className="w-3.5 h-3.5 text-[#00BFFF]" />
+            <span className="tracking-wide font-medium">{activeLang.nativeName}</span>
+            <ChevronDown
+              className={`w-3.5 h-3.5 text-neutral-400 transition-transform duration-300 ${
+                langDropdownOpen ? "rotate-180 text-cyan-400" : ""
+              }`}
+            />
+          </button>
+
+          {/* Language Menu */}
+          {langDropdownOpen && (
+            <div className="absolute right-0 top-full mt-2 w-64 max-h-[360px] overflow-y-auto z-50 animate-in fade-in slide-in-from-top-1 duration-200 rounded-2xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.9)] bg-black/90 backdrop-blur-2xl scrollbar-thin scrollbar-thumb-white/20">
+              <div className="sticky top-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#00BFFF]/60 to-transparent z-10" />
+              <div className="p-2 space-y-0.5">
+                <div className="px-3 py-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#00BFFF]/80">
+                  Select Language
+                </div>
+                {SITE_LANGUAGES.map((lang) => {
+                  const isSelected = lang.code === currentLang;
+                  return (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleSelectLanguage(lang.code)}
+                      className={`w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-left text-xs transition-all duration-150 cursor-pointer ${
+                        isSelected
+                          ? "bg-[#00BFFF]/15 text-[#00BFFF] font-medium"
+                          : "text-neutral-300 hover:bg-white/10 hover:text-white"
+                      }`}
+                    >
+                      <div className="flex flex-col">
+                        <span className="text-white text-xs">{lang.nativeName}</span>
+                        <span className="text-[10px] text-neutral-400 font-light">{lang.name}</span>
+                      </div>
+                      {isSelected && <Check className="w-3.5 h-3.5 text-[#00BFFF]" />}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+
         {/* Action Button: Get in Touch */}
         <Link
           href="/team"
@@ -154,7 +232,17 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
       </nav>
 
       {/* Mobile Hamburger Button */}
-      <div className="flex md:hidden items-center">
+      <div className="flex md:hidden items-center gap-3">
+        {/* Mobile Language Button */}
+        <button
+          onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 bg-black/60 text-xs text-neutral-200"
+          aria-label="Select website language"
+        >
+          <Globe className="w-3.5 h-3.5 text-[#00BFFF]" />
+          <span>{activeLang.code.toUpperCase()}</span>
+        </button>
+
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="p-2 -mr-2 text-neutral-300 hover:text-white focus:outline-none transition-colors"
@@ -210,6 +298,30 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
               >
                 ENERGY
               </Link>
+            </div>
+          </div>
+
+          {/* Mobile Language Selector */}
+          <div className="flex flex-col gap-3 pt-2 border-t border-white/10">
+            <span className="text-xs text-[#00BFFF] tracking-[0.25em] uppercase font-semibold flex items-center gap-2">
+              <Globe className="w-3.5 h-3.5" />
+              Language / ഭാഷ / மொழி
+            </span>
+            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto pr-1">
+              {SITE_LANGUAGES.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => handleSelectLanguage(lang.code)}
+                  className={`px-3 py-2 rounded-xl text-left text-xs transition-colors flex items-center justify-between ${
+                    lang.code === currentLang
+                      ? "bg-[#00BFFF]/20 text-[#00BFFF] border border-[#00BFFF]/40"
+                      : "bg-white/5 text-neutral-300 hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  <span>{lang.nativeName}</span>
+                  {lang.code === currentLang && <Check className="w-3 h-3 text-[#00BFFF]" />}
+                </button>
+              ))}
             </div>
           </div>
         </div>

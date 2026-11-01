@@ -31,7 +31,7 @@ export default function EnergyPage() {
               className="text-xs sm:text-sm tracking-[0.32em] text-[#38bdf8] uppercase font-semibold"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              BUSINESS DIVISIONS
+              NEXT-GENERATION ENERGY
             </span>
           </div>
 
@@ -39,7 +39,7 @@ export default function EnergyPage() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] text-white font-light leading-[1.08] tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Sustainable{" "}
+            Next-Generation{" "}
             <span className="text-[#38bdf8] font-normal drop-shadow-[0_0_35px_rgba(56,189,248,0.5)]">
               Energy
             </span>
@@ -49,53 +49,53 @@ export default function EnergyPage() {
             className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-neutral-300 font-light max-w-2xl leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Powering the future through breakthrough renewable generation, high-density solid-state storage, and intelligent decentralized grid networks.
+            Exploring green hydrogen, compact hydrogen fuel cells and thorium-based nuclear energy for a resilient energy future.
           </p>
 
           {/* Pillars - Frameless Open Layout (Zero Boxes) */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-14 mt-20">
             <div className="flex flex-col">
               <span className="text-xs font-mono tracking-[0.25em] text-[#38bdf8] uppercase mb-3">
-                01 / SOLAR
+                01 / HYDROGEN
               </span>
               <h3
                 className="text-2xl sm:text-3xl text-white font-light tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                Photovoltaic Innovation
+                Green Hydrogen
               </h3>
               <p className="text-sm text-neutral-400 font-light leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-                Next-generation perovskite solar architecture delivering quantum-level conversion efficiency and zero carbon footprints.
+                Renewable-powered hydrogen production and storage.
               </p>
             </div>
 
             <div className="flex flex-col">
               <span className="text-xs font-mono tracking-[0.25em] text-[#38bdf8] uppercase mb-3">
-                02 / STORAGE
+                02 / FUEL CELLS
               </span>
               <h3
                 className="text-2xl sm:text-3xl text-white font-light tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                Solid-State Storage
+                Compact Hydrogen Fuel Cells
               </h3>
               <p className="text-sm text-neutral-400 font-light leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-                Industrial-scale grid battery reserves built on non-toxic, ultra-durable solid electrolyte chemistry and high cycle density.
+                Exploring modular power for mobility, backup and distributed energy.
               </p>
             </div>
 
             <div className="flex flex-col">
               <span className="text-xs font-mono tracking-[0.25em] text-[#38bdf8] uppercase mb-3">
-                03 / DISTRIBUTION
+                03 / ADVANCED NUCLEAR
               </span>
               <h3
                 className="text-2xl sm:text-3xl text-white font-light tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                Smart Grid Systems
+                Thorium &amp; Nuclear Batteries
               </h3>
               <p className="text-sm text-neutral-400 font-light leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-                AI-driven decentralized power distribution optimizing real-time demand balance with zero waste and resilient fault isolation.
+                Future research interests in thorium fuel cycles and radioisotope power systems.
               </p>
             </div>
           </div>

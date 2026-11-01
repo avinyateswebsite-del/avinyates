@@ -13,18 +13,17 @@ export default function AppleLanguageChanger({ onAllLanguagesComplete }: AppleLa
   const completedRef = useRef(false);
 
   useEffect(() => {
-    // 900ms display per language, transition 280ms
+    // 680ms display per language, transition 250ms for smooth 13-language sequence
     const interval = setInterval(() => {
       setCurrentIndex((curr) => {
         if (curr >= APPLE_LANGUAGES.length - 1) {
-          // Finished all 8 languages!
+          // Finished all 13 languages!
           clearInterval(interval);
           if (!completedRef.current) {
             completedRef.current = true;
-            // Allow Tamil to be seen for 1000ms, then trigger completion
             setTimeout(() => {
               onAllLanguagesComplete?.();
-            }, 1000);
+            }, 800);
           }
           return curr;
         }
@@ -35,10 +34,10 @@ export default function AppleLanguageChanger({ onAllLanguagesComplete }: AppleLa
 
       const timeout = setTimeout(() => {
         setPrevIndex(null);
-      }, 300);
+      }, 260);
 
       return () => clearTimeout(timeout);
-    }, 900);
+    }, 680);
 
     return () => clearInterval(interval);
   }, [onAllLanguagesComplete]);

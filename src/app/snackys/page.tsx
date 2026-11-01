@@ -17,7 +17,8 @@ import {
   Utensils,
   Eye,
   Flame,
-  Award
+  Award,
+  FlaskConical
 } from "lucide-react";
 
 interface SnackyItem {
@@ -479,6 +480,95 @@ export default function SnackysPage() {
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-contain object-center drop-shadow-[0_20px_45px_rgba(0,0,0,0.95)] hover:scale-[1.02] transition-transform duration-700"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* SECTION 5: 3 CORE CRAFT PILLARS (SMART FRYING, NATURAL CHARACTER, INNOVATION) */}
+        {/* ========================================================================= */}
+        <section id="pillars" className="border-t border-white/10 pt-16 sm:pt-20 mb-24 sm:mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
+            {/* Pillar 1: Smart Frying */}
+            <div className="flex items-start gap-4 sm:gap-5">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
+                <svg className="w-9 h-9 text-[#00BFFF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                  <path d="M12 9v6m-3-3l3 3 3-3" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <span
+                  className="text-[11px] font-mono tracking-[0.24em] text-[#00BFFF] uppercase block mb-1"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  01 / SMART FRYING
+                </span>
+                <h3
+                  className="text-xl sm:text-2xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  Big Crunch. Less Oil.*
+                </h3>
+                <p className="text-xs sm:text-[13px] text-neutral-400 font-light leading-relaxed">
+                  Advanced vacuum frying and effective de-oiling transform pineapple, jackfruit and sweet potato into irresistibly crisp bites with less oil than conventional frying.*
+                </p>
+              </div>
+            </div>
+
+            {/* Pillar 2: Natural Character */}
+            <div className="flex items-start gap-4 sm:gap-5">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
+                <Leaf className="w-9 h-9 stroke-[1.8] text-[#00BFFF]" />
+              </div>
+              <div>
+                <span
+                  className="text-[11px] font-mono tracking-[0.24em] text-[#00BFFF] uppercase block mb-1"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  02 / NATURAL CHARACTER
+                </span>
+                <h3
+                  className="text-xl sm:text-2xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  Lower Heat. Louder Flavour.
+                </h3>
+                <p className="text-xs sm:text-[13px] text-neutral-400 font-light leading-relaxed">
+                  Our reduced-pressure process helps preserve the distinctive flavours and vibrant colours of tropical fruits and wholesome roots.
+                </p>
+              </div>
+            </div>
+
+            {/* Pillar 3: Innovation */}
+            <div className="flex items-start gap-4 sm:gap-5">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
+                <FlaskConical className="w-9 h-9 stroke-[1.8] text-[#00BFFF]" />
+              </div>
+              <div>
+                <span
+                  className="text-[11px] font-mono tracking-[0.24em] text-[#00BFFF] uppercase block mb-1"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  03 / INNOVATION
+                </span>
+                <h3
+                  className="text-xl sm:text-2xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  Nature&apos;s Variety. Reimagined.
+                </h3>
+                <p className="text-xs sm:text-[13px] text-neutral-400 font-light leading-relaxed">
+                  Extraordinary fruits and roots meet smarter frying technology&mdash;bringing tropical flavour and an exciting crunch to every Snackys bite.
+                </p>
+              </div>
+            </div>
+
+            {/* Disclaimer Footnote */}
+            <div className="md:col-span-3 pt-2">
+              <p className="text-[11px] sm:text-xs text-neutral-500 font-light tracking-wide">
+                *Less-oil claim subject to comparative finished-product testing.
+              </p>
             </div>
           </div>
         </section>
