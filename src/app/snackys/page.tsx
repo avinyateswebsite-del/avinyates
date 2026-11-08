@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
+import { useTranslation } from "@/i18n/LanguageContext";
 import {
   Play,
   ArrowRight,
@@ -35,6 +36,7 @@ interface SnackyItem {
 }
 
 export default function SnackysPage() {
+  const { t, languageConfig } = useTranslation();
   const [selectedChip, setSelectedChip] = useState<SnackyItem | null>(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
@@ -103,7 +105,10 @@ export default function SnackysPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-black text-white selection:bg-cyan-500/30 selection:text-white select-none overflow-x-hidden">
+    <div
+      className="relative min-h-screen bg-black text-white selection:bg-cyan-500/30 selection:text-white select-none overflow-x-hidden"
+      style={languageConfig.fontFamily ? { fontFamily: languageConfig.fontFamily } : undefined}
+    >
       {/* Fixed Diagonal Milky Way Starfield Background */}
       <div className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
         <Image
@@ -135,7 +140,7 @@ export default function SnackysPage() {
                 className="text-[11px] sm:text-xs tracking-[0.28em] text-[#00BFFF] uppercase font-semibold"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                SNACKYS™ / ARTISANAL CRISPS
+                {t.snackys.eyebrow}
               </span>
             </div>
 
@@ -144,7 +149,7 @@ export default function SnackysPage() {
               className="text-sm sm:text-base text-[#00BFFF] font-normal tracking-wide mb-4"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              It&apos;s Yummy
+              {t.snackys.tagline}
             </p>
 
             {/* Headline */}
@@ -152,16 +157,15 @@ export default function SnackysPage() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold text-white tracking-tight leading-[1.05] drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              Crunch.<br />
-              Without{" "}
+              {t.snackys.heroTitle1}<br />
               <span className="text-[#00BFFF] font-bold drop-shadow-[0_0_35px_rgba(0,191,255,0.6)]">
-                Guilt.
+                {t.snackys.heroTitle2}
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="mt-6 text-sm sm:text-base md:text-[17px] text-neutral-300 font-light max-w-xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-              Artisanal vacuum-cooked root crisps and tropical fruit chips crafted from farm-fresh harvest and clean seasonings. Zero trans-fats, pure crunch, complete guilt-free snacking.
+              {t.snackys.heroSubtitle}
             </p>
 
             {/* 3 Value Pillars Badges */}
@@ -170,21 +174,21 @@ export default function SnackysPage() {
                 <div className="w-7 h-7 rounded-full bg-[#00BFFF]/10 border border-[#00BFFF]/30 flex items-center justify-center text-[#00BFFF]">
                   <Leaf className="w-3.5 h-3.5" />
                 </div>
-                <span>100% Real Roots &amp; Fruits</span>
+                <span>{t.snackys.badgeOil}</span>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <div className="w-7 h-7 rounded-full bg-[#00BFFF]/10 border border-[#00BFFF]/30 flex items-center justify-center text-[#00BFFF]">
                   <Shield className="w-3.5 h-3.5" />
                 </div>
-                <span>Zero Preservatives</span>
+                <span>{t.snackys.badgeSugar}</span>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <div className="w-7 h-7 rounded-full bg-[#00BFFF]/10 border border-[#00BFFF]/30 flex items-center justify-center text-[#00BFFF]">
                   <Sparkles className="w-3.5 h-3.5" />
                 </div>
-                <span>Low-Temp Vacuum Cooked</span>
+                <span>{t.snackys.badgeVacuum}</span>
               </div>
             </div>
 
@@ -195,7 +199,7 @@ export default function SnackysPage() {
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-[#00BFFF]/70 hover:border-[#00BFFF] bg-black/40 hover:bg-[#00BFFF]/10 text-xs sm:text-sm text-white font-medium tracking-wide transition-all duration-300 group shadow-xl shadow-black/80"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                <span>Explore Chips</span>
+                <span>{t.snackys.exploreChips}</span>
                 <ArrowRight className="w-4 h-4 text-[#00BFFF] transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </div>
@@ -247,7 +251,7 @@ export default function SnackysPage() {
                 className="text-xs font-semibold tracking-[0.28em] text-neutral-300 uppercase"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                OUR CRAFT
+                {t.snackys.processEyebrow}
               </span>
             </div>
 
@@ -256,24 +260,17 @@ export default function SnackysPage() {
               className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-5 drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              From Farm<br />
-              to <span className="text-[#00BFFF]">Golden Crunch.</span>
+              {t.snackys.processTitle}
             </h2>
 
             {/* Subtext */}
             <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed mb-8 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-              We source farm-fresh heritage produce, slice to micron precision, and vacuum-cook at lower temperatures to preserve natural color, essential fiber, and unbeatable crispness &mdash; no excess oil, no shortcuts.
+              {t.snackys.processDesc}
             </p>
 
             {/* Process Checklist */}
             <div className="flex flex-col gap-4 text-sm sm:text-base text-neutral-200 font-light">
-              {[
-                "Hand-Selected Roots & Fruits",
-                "Gentle Low-Temp Vacuum Frying (<120°C)",
-                "70% Less Oil Absorption than Traditional Chips",
-                "Retains 90%+ Natural Nutrients & Flavor",
-                "Clean Label Always — Zero Artificial Additives",
-              ].map((text, idx) => (
+              {t.snackys.processBullets.map((text, idx) => (
                 <div key={idx} className="flex items-center gap-3.5 group">
                   <div className="w-6 h-6 rounded-full bg-[#00BFFF]/10 border border-[#00BFFF]/30 flex items-center justify-center text-[#00BFFF] shrink-0 group-hover:scale-110 transition-transform">
                     <CheckCircle2 className="w-3.5 h-3.5" />
@@ -317,10 +314,10 @@ export default function SnackysPage() {
                     className="text-base sm:text-lg font-medium text-white tracking-wide block drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                     style={{ fontFamily: "'Montserrat', sans-serif" }}
                   >
-                    Watch Our Process
+                    {t.snackys.watchProcess}
                   </span>
                   <span className="text-xs text-neutral-400 font-mono tracking-wider mt-1 block">
-                    Cinematic Brand Film
+                    {t.snackys.filmLabel}
                   </span>
                 </div>
               </div>
@@ -502,16 +499,16 @@ export default function SnackysPage() {
                   className="text-xs font-mono tracking-[0.25em] text-[#00BFFF] uppercase block mb-1.5"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
-                  01 / SMART FRYING
+                  {t.snackys.pillars[0].tag}
                 </span>
                 <h3
                   className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
-                  Big Crunch.<br />Less Oil.*
+                  {t.snackys.pillars[0].titleLine1}<br />{t.snackys.pillars[0].titleLine2}
                 </h3>
                 <p className="text-sm text-neutral-300 font-light leading-relaxed max-w-sm">
-                  Advanced vacuum frying and effective de-oiling transform pineapple, jackfruit and sweet potato into irresistibly crisp bites with less oil than conventional frying.*
+                  {t.snackys.pillars[0].desc}
                 </p>
               </div>
             </div>
@@ -526,16 +523,16 @@ export default function SnackysPage() {
                   className="text-xs font-mono tracking-[0.25em] text-[#00BFFF] uppercase block mb-1.5"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
-                  02 / NATURAL CHARACTER
+                  {t.snackys.pillars[1].tag}
                 </span>
                 <h3
                   className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
-                  Lower Heat.<br />Louder Flavour.
+                  {t.snackys.pillars[1].titleLine1}<br />{t.snackys.pillars[1].titleLine2}
                 </h3>
                 <p className="text-sm text-neutral-300 font-light leading-relaxed max-w-sm">
-                  Our reduced-pressure process helps preserve the distinctive flavours and vibrant colours of tropical fruits and wholesome roots.
+                  {t.snackys.pillars[1].desc}
                 </p>
               </div>
             </div>
@@ -550,16 +547,16 @@ export default function SnackysPage() {
                   className="text-xs font-mono tracking-[0.25em] text-[#00BFFF] uppercase block mb-1.5"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
-                  03 / INNOVATION
+                  {t.snackys.pillars[2].tag}
                 </span>
                 <h3
                   className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
-                  Nature&apos;s Variety.<br />Reimagined.
+                  {t.snackys.pillars[2].titleLine1}<br />{t.snackys.pillars[2].titleLine2}
                 </h3>
                 <p className="text-sm text-neutral-300 font-light leading-relaxed max-w-sm">
-                  Extraordinary fruits and roots meet smarter frying technology&mdash;bringing tropical flavour and an exciting crunch to every Snackys bite.
+                  {t.snackys.pillars[2].desc}
                 </p>
               </div>
             </div>
@@ -567,7 +564,7 @@ export default function SnackysPage() {
             {/* Disclaimer Footnote */}
             <div className="md:col-span-3 pt-6">
               <p className="text-xs text-neutral-400 font-light tracking-wide">
-                *Less-oil claim subject to comparative finished-product testing.
+                {t.snackys.footnote}
               </p>
             </div>
           </div>

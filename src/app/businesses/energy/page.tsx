@@ -4,10 +4,15 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
+import { useTranslation } from "@/i18n/LanguageContext";
 
 export default function EnergyPage() {
+  const { t, languageConfig } = useTranslation();
   return (
-    <div className="relative min-h-screen bg-black text-white selection:bg-cyan-500/30 selection:text-white select-none">
+    <div
+      className="relative min-h-screen bg-black text-white selection:bg-cyan-500/30 selection:text-white select-none"
+      style={languageConfig.fontFamily ? { fontFamily: languageConfig.fontFamily } : undefined}
+    >
       {/* Fixed Diagonal Milky Way Starfield Background */}
       <div className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
         <Image
@@ -31,7 +36,7 @@ export default function EnergyPage() {
               className="text-xs sm:text-sm tracking-[0.32em] text-[#38bdf8] uppercase font-semibold"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              04 / ENERGY
+              {t.energy.badge}
             </span>
           </div>
 
@@ -40,8 +45,8 @@ export default function EnergyPage() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[76px] text-white font-light leading-[1.08] tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Next-Generation<br />
-            Energy
+            {t.energy.titleLine1}<br />
+            {t.energy.titleLine2}
           </h1>
 
           {/* Subheading in Cyan */}
@@ -49,7 +54,7 @@ export default function EnergyPage() {
             className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-[#38bdf8] font-normal tracking-wide drop-shadow-[0_0_20px_rgba(56,189,248,0.4)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Hydrogen &amp; Thorium SMRs • Nuclear Fuel Cells
+            {t.energy.subtitle}
           </p>
 
           {/* Main Description */}
@@ -57,54 +62,28 @@ export default function EnergyPage() {
             className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-neutral-300 font-light max-w-2xl leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            We are planning to enter hydrogen and Thorium-based Small Medium Reactors (SMRs) and nuclear fuel cell innovation in the future.
+            {t.energy.desc}
           </p>
 
           {/* Stacked Pillars with Horizontal Separator Lines */}
           <div className="flex flex-col mt-14 sm:mt-16 space-y-10 sm:space-y-12">
-            {/* Pillar 1 */}
-            <div className="relative pt-6">
-              <div className="w-12 h-[2px] bg-[#38bdf8] mb-6 shadow-[0_0_8px_#38bdf8]" />
-              <h3
-                className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-              >
-                Hydrogen Energy
-              </h3>
-              <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed max-w-xl">
-                Next-generation green hydrogen generation, storage, and industrial energy solutions.
-              </p>
-              <div className="w-full h-[1px] bg-white/15 mt-8 sm:mt-10" />
-            </div>
-
-            {/* Pillar 2 */}
-            <div className="relative pt-2">
-              <div className="w-12 h-[2px] bg-[#38bdf8] mb-6 shadow-[0_0_8px_#38bdf8]" />
-              <h3
-                className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-              >
-                Thorium Small Medium Reactors
-              </h3>
-              <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed max-w-xl">
-                Pioneering safe, proliferation-resistant Thorium-based SMR technology for continuous clean baseload power.
-              </p>
-              <div className="w-full h-[1px] bg-white/15 mt-8 sm:mt-10" />
-            </div>
-
-            {/* Pillar 3 */}
-            <div className="relative pt-2">
-              <div className="w-12 h-[2px] bg-[#38bdf8] mb-6 shadow-[0_0_8px_#38bdf8]" />
-              <h3
-                className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-              >
-                Nuclear Fuel Cells
-              </h3>
-              <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed max-w-xl">
-                Advanced nuclear fuel cell architectures and compact radioisotope power systems for high-endurance applications.
-              </p>
-            </div>
+            {t.energy.pillars.map((pillar, idx) => (
+              <div key={idx} className="relative pt-2">
+                <div className="w-12 h-[2px] bg-[#38bdf8] mb-6 shadow-[0_0_8px_#38bdf8]" />
+                <h3
+                  className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  {pillar.title}
+                </h3>
+                <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed max-w-xl">
+                  {pillar.desc}
+                </p>
+                {idx < t.energy.pillars.length - 1 && (
+                  <div className="w-full h-[1px] bg-white/15 mt-8 sm:mt-10" />
+                )}
+              </div>
+            ))}
           </div>
 
           {/* Research Vision Tagline */}
@@ -113,7 +92,7 @@ export default function EnergyPage() {
               className="text-xs sm:text-sm tracking-[0.35em] text-[#38bdf8] uppercase font-medium drop-shadow-[0_0_12px_rgba(56,189,248,0.5)]"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              OUR RESEARCH VISION
+              {t.energy.visionTag}
             </span>
           </div>
         </div>

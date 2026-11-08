@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
+import { useTranslation } from "@/i18n/LanguageContext";
 import {
   Play,
   ArrowRight,
@@ -32,6 +33,7 @@ interface FlavourItem {
 }
 
 export default function GulpitPage() {
+  const { t, languageConfig } = useTranslation();
   const [selectedFlavour, setSelectedFlavour] = useState<FlavourItem | null>(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
@@ -153,7 +155,10 @@ export default function GulpitPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-black text-white selection:bg-cyan-500/30 selection:text-white select-none overflow-x-hidden">
+    <div
+      className="relative min-h-screen bg-black text-white selection:bg-cyan-500/30 selection:text-white select-none overflow-x-hidden"
+      style={languageConfig.fontFamily ? { fontFamily: languageConfig.fontFamily } : undefined}
+    >
       {/* Fixed Diagonal Milky Way Starfield Background */}
       <div className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
         <Image
@@ -184,7 +189,7 @@ export default function GulpitPage() {
                 className="text-xs sm:text-sm font-semibold tracking-[0.28em] text-neutral-300 uppercase"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                GULPIT
+                {t.gulpit.eyebrow}
               </span>
             </div>
 
@@ -193,7 +198,7 @@ export default function GulpitPage() {
               className="text-sm sm:text-base text-[#00BFFF] font-normal tracking-wide mb-4"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              Spread Happiness
+              {t.gulpit.tagline}
             </p>
 
             {/* Main Headline */}
@@ -201,16 +206,16 @@ export default function GulpitPage() {
               className="text-5xl sm:text-6xl md:text-7xl lg:text-[76px] font-bold text-white tracking-tight leading-[1.05] drop-shadow-[0_2px_25px_rgba(0,0,0,0.95)]"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              Pure<br />
-              Flavour.<br />
+              {t.gulpit.heroTitle1}<br />
+              {t.gulpit.heroTitle2}<br />
               <span className="text-[#00BFFF] drop-shadow-[0_0_35px_rgba(0,191,255,0.6)]">
-                No Compromise.
+                {t.gulpit.heroHighlight}
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="mt-6 text-sm sm:text-base md:text-[17px] text-neutral-300 font-light max-w-xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-              Cold-pressed natural hydration and fruit spreads crafted from real fruits and botanicals. Clean labels, bold flavours, complete vitality.
+              {t.gulpit.heroSubtitle}
             </p>
 
             {/* 3 Value Pillars Badges matching template */}
@@ -219,21 +224,21 @@ export default function GulpitPage() {
                 <div className="w-7 h-7 rounded-full bg-[#00BFFF]/10 border border-[#00BFFF]/30 flex items-center justify-center text-[#00BFFF]">
                   <Leaf className="w-3.5 h-3.5" />
                 </div>
-                <span>100% Natural Ingredients</span>
+                <span>{t.gulpit.badgeNatural}</span>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <div className="w-7 h-7 rounded-full bg-[#00BFFF]/10 border border-[#00BFFF]/30 flex items-center justify-center text-[#00BFFF]">
                   <Shield className="w-3.5 h-3.5" />
                 </div>
-                <span>Zero Preservatives</span>
+                <span>{t.gulpit.badgePreservatives}</span>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <div className="w-7 h-7 rounded-full bg-[#00BFFF]/10 border border-[#00BFFF]/30 flex items-center justify-center text-[#00BFFF]">
                   <Droplets className="w-3.5 h-3.5" />
                 </div>
-                <span>Clean Label Nutrition</span>
+                <span>{t.gulpit.badgeClean}</span>
               </div>
             </div>
 
@@ -244,7 +249,7 @@ export default function GulpitPage() {
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-[#00BFFF]/70 hover:border-[#00BFFF] bg-black/40 hover:bg-[#00BFFF]/10 text-xs sm:text-sm text-white font-medium tracking-wide transition-all duration-300 group shadow-xl shadow-black/80"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                <span>Explore Flavours</span>
+                <span>{t.gulpit.exploreFlavours}</span>
                 <ArrowRight className="w-4 h-4 text-[#00BFFF] transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </div>
@@ -296,7 +301,7 @@ export default function GulpitPage() {
                 className="text-xs font-semibold tracking-[0.28em] text-neutral-300 uppercase"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                OUR PROCESS
+                {t.gulpit.processEyebrow}
               </span>
             </div>
 
@@ -305,24 +310,17 @@ export default function GulpitPage() {
               className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-5 drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              From Nature<br />
-              to <span className="text-[#00BFFF]">Nourishment.</span>
+              {t.gulpit.processTitle}
             </h2>
 
             {/* Subtext */}
             <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed mb-8 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-              We source real ingredients, preserve their natural goodness, and craft every spread with care &mdash; no artificial additives, no shortcuts.
+              {t.gulpit.processDesc}
             </p>
 
             {/* Process Checklist */}
             <div className="flex flex-col gap-4 text-sm sm:text-base text-neutral-200 font-light">
-              {[
-                "Real Ingredients",
-                "Cold-Pressed Goodness",
-                "Hygienic & Modern Production",
-                "Quality Checked",
-                "Clean Label, Always",
-              ].map((text, idx) => (
+              {t.gulpit.processBullets.map((text, idx) => (
                 <div key={idx} className="flex items-center gap-3.5 group">
                   <div className="w-6 h-6 rounded-full bg-[#00BFFF]/10 border border-[#00BFFF]/30 flex items-center justify-center text-[#00BFFF] shrink-0 group-hover:scale-110 transition-transform">
                     <CheckCircle2 className="w-3.5 h-3.5" />
@@ -366,10 +364,10 @@ export default function GulpitPage() {
                     className="text-base sm:text-lg font-medium text-white tracking-wide block drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                     style={{ fontFamily: "'Montserrat', sans-serif" }}
                   >
-                    Watch Our Process
+                    {t.gulpit.watchProcess}
                   </span>
                   <span className="text-xs text-neutral-400 font-mono tracking-wider mt-1 block">
-                    Cinematic Brand Film
+                    {t.gulpit.filmLabel}
                   </span>
                 </div>
               </div>
@@ -391,7 +389,7 @@ export default function GulpitPage() {
                   className="text-xs font-semibold tracking-[0.28em] text-neutral-300 uppercase"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
-                  OUR FLAVOURS
+                  {t.gulpit.flavoursEyebrow}
                 </span>
               </div>
 
@@ -399,13 +397,12 @@ export default function GulpitPage() {
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                10 Bold Flavours.<br />
-                <span className="text-[#00BFFF]">One Clean Promise.</span>
+                {t.gulpit.flavoursTitle}
               </h2>
             </div>
 
             <p className="text-sm sm:text-base text-neutral-300 font-light max-w-md leading-relaxed">
-              A flavour for every mood. Made from real ingredients, inspired by global cuisines, and crafted for a cleaner, healthier you.
+              {t.gulpit.flavoursSubtitle}
             </p>
           </div>
 

@@ -4,51 +4,17 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
+import { useTranslation } from "@/i18n/LanguageContext";
 
 export default function TeamPage() {
-  const leadership = [
-    {
-      name: "Executive Leadership",
-      role: "Strategic Direction & Governance",
-      desc: "Guiding Avinyates India's global trajectory across high-growth frontier sectors with bold vision and uncompromising ethical standards.",
-      tag: "VISION",
-    },
-    {
-      name: "Frontier Aerospace & Defence",
-      role: "Aeronautics & Autonomous Systems",
-      desc: "Distinguished propulsion engineers and defense technology veterans pioneering next-generation aerospace capabilities.",
-      tag: "DEFENCE",
-    },
-    {
-      name: "Food Revolution & Nutrition",
-      role: "Clean Food Science & Formulation",
-      desc: "Pioneering bio-chemists and food technologists dedicated to 100% preservative-free, zero-chemical, zero-added-sugar FMCG excellence.",
-      tag: "FMCG",
-    },
-    {
-      name: "Next-Generation Energy",
-      role: "Hydrogen & Thorium SMRs • Nuclear Fuel Cells",
-      desc: "Planning to enter hydrogen, Thorium-based Small Medium Reactors (SMRs), and nuclear fuel cell innovation in the future.",
-      tag: "ENERGY",
-      subItems: [
-        {
-          title: "Hydrogen Energy",
-          desc: "Next-generation green hydrogen generation, storage, and industrial energy solutions.",
-        },
-        {
-          title: "Thorium Small Medium Reactors",
-          desc: "Pioneering safe, proliferation-resistant Thorium-based SMR technology for continuous clean baseload power.",
-        },
-        {
-          title: "Nuclear Fuel Cells",
-          desc: "Advanced nuclear fuel cell architectures and compact radioisotope power systems for high-endurance applications.",
-        },
-      ],
-    },
-  ];
+  const { t, languageConfig } = useTranslation();
+  const leadership = t.team.leadership;
 
   return (
-    <div className="relative min-h-screen bg-black text-white selection:bg-cyan-500/30 selection:text-white select-none">
+    <div
+      className="relative min-h-screen bg-black text-white selection:bg-cyan-500/30 selection:text-white select-none"
+      style={languageConfig.fontFamily ? { fontFamily: languageConfig.fontFamily } : undefined}
+    >
       {/* Fixed Diagonal Milky Way Starfield Background */}
       <div className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
         <Image
