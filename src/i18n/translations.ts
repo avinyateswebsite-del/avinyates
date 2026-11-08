@@ -2,21 +2,30 @@ import en, { TranslationKeys } from "./locales/en";
 import hi from "./locales/hi";
 import ar from "./locales/ar";
 import ml from "./locales/ml";
+import ta from "./locales/ta";
+import te from "./locales/te";
+import kn from "./locales/kn";
+import mr from "./locales/mr";
+import zhCN from "./locales/zh-CN";
+import fr from "./locales/fr";
+import es from "./locales/es";
+import ja from "./locales/ja";
+import ko from "./locales/ko";
 import { SupportedLanguageCode } from "./config";
 
-// Dedicated in-house translations with en fallback
+// Dedicated in-house translations for all 13 supported languages
 export const translations: Record<SupportedLanguageCode, TranslationKeys> = {
   en,
   hi,
   ar,
   ml,
-  ta: en,
-  te: en,
-  kn: en,
-  mr: en,
-  "zh-CN": en,
-  fr: en,
-  es: en,
-  ja: en,
-  ko: en,
+  ta,
+  te,
+  kn,
+  mr,
+  "zh-CN": zhCN,
+  fr,
+  es,
+  ja,
+  ko,
 };
