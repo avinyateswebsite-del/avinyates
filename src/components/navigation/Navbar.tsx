@@ -4,31 +4,21 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Globe, Check } from "lucide-react";
-import { SITE_LANGUAGES, getStoredLanguage, setSiteLanguage } from "@/utils/translator";
+import { useTranslation } from "@/i18n/LanguageContext";
+import { SupportedLanguageCode } from "@/i18n/config";
 
 interface NavbarProps {
   currentPath?: string;
 }
 
 export default function Navbar({ currentPath = "/" }: NavbarProps) {
+  const { language, setLanguage, languages, t } = useTranslation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState("en");
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const langDropdownRef = useRef<HTMLDivElement>(null);
-
-  // Sync stored language and listen for external changes
-  useEffect(() => {
-    setCurrentLang(getStoredLanguage());
-    const handleLangChange = (e: Event) => {
-      const custom = e as CustomEvent<string>;
-      if (custom.detail) setCurrentLang(custom.detail);
-    };
-    window.addEventListener("languageChange", handleLangChange);
-    return () => window.removeEventListener("languageChange", handleLangChange);
-  }, []);
 
   // Close dropdowns on outside click
   useEffect(() => {
@@ -44,13 +34,12 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const activeLang = SITE_LANGUAGES.find((l) => l.code === currentLang) || SITE_LANGUAGES[0];
+  const activeLang = languages.find((l) => l.code === language) || languages[0];
 
   const handleSelectLanguage = (code: string) => {
-    setCurrentLang(code);
+    setLanguage(code as SupportedLanguageCode);
     setLangDropdownOpen(false);
     setMobileMenuOpen(false);
-    setSiteLanguage(code);
   };
 
   return (
@@ -79,13 +68,13 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
             className="text-white text-sm sm:text-base md:text-xl lg:text-[23px] xl:text-[26px] font-semibold tracking-[0.16em] uppercase leading-none whitespace-nowrap drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            AVINYATES INDIA
+            {t.common.brandName}
           </span>
           <span
             className="text-neutral-400 text-[8.5px] sm:text-[10px] md:text-xs lg:text-[13px] xl:text-[14.5px] font-normal tracking-[0.26em] leading-none mt-1 sm:mt-1.5 md:mt-2 text-center whitespace-nowrap drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Inspiring Innovation
+            {t.common.tagline}
           </span>
         </div>
       </Link>
@@ -100,7 +89,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
           href="/team"
           className="text-neutral-200 hover:text-white transition-colors duration-200 tracking-wide whitespace-nowrap py-2"
         >
-          Our Team
+          {t.nav.ourTeam}
         </Link>
 
         {/* Businesses Dropdown Menu */}
@@ -115,7 +104,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
             className="flex items-center gap-2 text-neutral-200 hover:text-white transition-colors duration-200 tracking-wide whitespace-nowrap focus:outline-none cursor-pointer"
             aria-expanded={dropdownOpen}
           >
-            <span>Businesses</span>
+            <span>{t.nav.businesses}</span>
             <ChevronDown
               className={`w-4 h-4 transition-transform duration-300 ${
                 dropdownOpen ? "rotate-180 text-cyan-400" : "text-neutral-400"
@@ -125,7 +114,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
 
           {/* Businesses Dropdown Menu */}
           {dropdownOpen && (
-            <div className="absolute right-0 top-full mt-2 min-w-[220px] z-50 animate-in fade-in slide-in-from-top-1 duration-200 rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] bg-black/85 backdrop-blur-2xl">
+            <div className="absolute right-0 top-full mt-2 min-w-[240px] z-50 animate-in fade-in slide-in-from-top-1 duration-200 rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] bg-black/85 backdrop-blur-2xl">
               {/* Cyan top accent line */}
               <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#00BFFF]/60 to-transparent" />
 
@@ -137,7 +126,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                   className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-white/5 transition-all duration-200"
                 >
                   <span className="text-neutral-300 group-hover:text-white text-sm font-light tracking-widest uppercase transition-all">
-                    FMCG
+                    {t.nav.fmcg}
                   </span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00BFFF] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                 </Link>
@@ -149,7 +138,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                   className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-white/5 transition-all duration-200"
                 >
                   <span className="text-neutral-300 group-hover:text-white text-sm font-light tracking-widest uppercase transition-all">
-                    AEROSPACE &amp; DEFENCE
+                    {t.nav.aerospace}
                   </span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00BFFF] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                 </Link>
@@ -161,7 +150,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                   className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-white/5 transition-all duration-200"
                 >
                   <span className="text-neutral-300 group-hover:text-white text-sm font-light tracking-widest uppercase transition-all">
-                    ENERGY
+                    {t.nav.energy}
                   </span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00BFFF] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                 </Link>
@@ -193,10 +182,10 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
               <div className="sticky top-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#00BFFF]/60 to-transparent z-10" />
               <div className="p-2 space-y-0.5">
                 <div className="px-3 py-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#00BFFF]/80">
-                  Select Language
+                  {t.nav.selectLanguage}
                 </div>
-                {SITE_LANGUAGES.map((lang) => {
-                  const isSelected = lang.code === currentLang;
+                {languages.map((lang) => {
+                  const isSelected = lang.code === language;
                   return (
                     <button
                       key={lang.code}
@@ -219,16 +208,6 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
             </div>
           )}
         </div>
-
-        {/* Action Button: Get in Touch */}
-        <Link
-          href="/team"
-          className="hidden lg:inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#00BFFF]/60 hover:border-[#00BFFF] bg-black/40 hover:bg-[#00BFFF]/10 text-xs text-white font-normal tracking-wide transition-all duration-300 group"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-        >
-          <span>Get in Touch</span>
-          <span className="text-[#00BFFF] transition-transform duration-300 group-hover:translate-x-1">→</span>
-        </Link>
       </nav>
 
       {/* Mobile Hamburger Button */}
@@ -248,80 +227,108 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
           className="p-2 -mr-2 text-neutral-300 hover:text-white focus:outline-none transition-colors"
           aria-label="Toggle navigation menu"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {mobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+          <div className="w-6 h-5 flex flex-col justify-between">
+            <span
+              className={`w-full h-0.5 bg-white rounded-full transition-transform duration-300 origin-left ${
+                mobileMenuOpen ? "rotate-45 translate-x-1" : ""
+              }`}
+            />
+            <span
+              className={`w-full h-0.5 bg-white rounded-full transition-opacity duration-300 ${
+                mobileMenuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`w-full h-0.5 bg-white rounded-full transition-transform duration-300 origin-left ${
+                mobileMenuOpen ? "-rotate-45 translate-x-1" : ""
+              }`}
+            />
+          </div>
         </button>
       </div>
 
-      {/* Mobile Frameless Slide-Down Menu Overlay */}
+      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div
-          className="absolute top-full left-0 right-0 px-8 py-8 bg-black/95 backdrop-blur-3xl flex flex-col gap-6 text-neutral-200 z-50 md:hidden animate-in fade-in duration-200"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-        >
-          <Link
-            href="/team"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-lg font-light hover:text-white transition-colors"
-          >
-            Our Team
-          </Link>
+        <div className="fixed inset-0 top-[70px] bg-black/95 backdrop-blur-xl z-40 flex flex-col px-6 py-8 md:hidden animate-in fade-in duration-200">
+          <div className="flex flex-col gap-4 text-base font-light tracking-wider">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-neutral-200 hover:text-cyan-400 py-2 border-b border-white/10"
+            >
+              Home
+            </Link>
+            <Link
+              href="/team"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-neutral-200 hover:text-cyan-400 py-2 border-b border-white/10"
+            >
+              {t.nav.ourTeam}
+            </Link>
 
-          <div className="flex flex-col gap-4">
-            <span className="text-xs text-neutral-500 tracking-[0.25em] uppercase font-semibold">
-              Businesses
-            </span>
-            <div className="flex flex-col gap-3 pl-3">
+            <div className="py-2 border-b border-white/10 flex flex-col gap-2">
+              <span className="text-neutral-400 text-xs tracking-widest uppercase">
+                {t.nav.businesses}
+              </span>
               <Link
                 href="/businesses/fmcg"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base text-neutral-300 hover:text-white font-light transition-colors"
+                className="text-white hover:text-cyan-400 pl-4 py-1.5 text-sm"
               >
-                FMCG
+                {t.nav.fmcg}
               </Link>
               <Link
                 href="/businesses/aerospace-defence"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base text-neutral-300 hover:text-white font-light transition-colors"
+                className="text-white hover:text-cyan-400 pl-4 py-1.5 text-sm"
               >
-                AEROSPACE &amp; DEFENCE
+                {t.nav.aerospace}
               </Link>
               <Link
                 href="/businesses/energy"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base text-neutral-300 hover:text-white font-light transition-colors"
+                className="text-white hover:text-cyan-400 pl-4 py-1.5 text-sm"
               >
-                ENERGY
+                {t.nav.energy}
               </Link>
             </div>
           </div>
+        </div>
+      )}
 
-          {/* Mobile Language Selector */}
-          <div className="flex flex-col gap-3 pt-2 border-t border-white/10">
-            <span className="text-xs text-[#00BFFF] tracking-[0.25em] uppercase font-semibold flex items-center gap-2">
-              <Globe className="w-3.5 h-3.5" />
-              Language / ഭാഷ / மொழி
-            </span>
-            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto pr-1">
-              {SITE_LANGUAGES.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => handleSelectLanguage(lang.code)}
-                  className={`px-3 py-2 rounded-xl text-left text-xs transition-colors flex items-center justify-between ${
-                    lang.code === currentLang
-                      ? "bg-[#00BFFF]/20 text-[#00BFFF] border border-[#00BFFF]/40"
-                      : "bg-white/5 text-neutral-300 hover:bg-white/10 hover:text-white"
-                  }`}
-                >
-                  <span>{lang.nativeName}</span>
-                  {lang.code === currentLang && <Check className="w-3 h-3 text-[#00BFFF]" />}
-                </button>
-              ))}
+      {/* Mobile Language Picker Modal */}
+      {langDropdownOpen && (
+        <div className="md:hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-neutral-900 border border-white/20 rounded-2xl w-full max-w-sm max-h-[80vh] overflow-y-auto p-4 flex flex-col gap-2 shadow-2xl">
+            <div className="flex items-center justify-between pb-2 border-b border-white/10">
+              <span className="text-xs uppercase tracking-widest text-[#00BFFF] font-mono">
+                {t.nav.selectLanguage}
+              </span>
+              <button
+                onClick={() => setLangDropdownOpen(false)}
+                className="text-neutral-400 hover:text-white text-xs px-2 py-1"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="flex flex-col gap-1">
+              {languages.map((lang) => {
+                const isSelected = lang.code === language;
+                return (
+                  <button
+                    key={lang.code}
+                    onClick={() => handleSelectLanguage(lang.code)}
+                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-sm transition-all ${
+                      isSelected
+                        ? "bg-[#00BFFF]/20 text-[#00BFFF]"
+                        : "text-neutral-200 hover:bg-white/10"
+                    }`}
+                  >
+                    <span>{lang.nativeName}</span>
+                    <span className="text-xs text-neutral-400">{lang.name}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -27,21 +27,21 @@ export default function TeamPage() {
     },
     {
       name: "Next-Generation Energy",
-      role: "Green Hydrogen • Advanced Nuclear Research",
-      desc: "Exploring green hydrogen, compact hydrogen fuel cells and thorium-based nuclear energy for a resilient energy future.",
+      role: "Hydrogen & Thorium SMRs • Nuclear Fuel Cells",
+      desc: "Planning to enter hydrogen, Thorium-based Small Medium Reactors (SMRs), and nuclear fuel cell innovation in the future.",
       tag: "ENERGY",
       subItems: [
         {
-          title: "Green Hydrogen",
-          desc: "Renewable-powered hydrogen production and storage.",
+          title: "Hydrogen Energy",
+          desc: "Next-generation green hydrogen generation, storage, and industrial energy solutions.",
         },
         {
-          title: "Compact Hydrogen Fuel Cells",
-          desc: "Exploring modular power for mobility, backup and distributed energy.",
+          title: "Thorium Small Medium Reactors",
+          desc: "Pioneering safe, proliferation-resistant Thorium-based SMR technology for continuous clean baseload power.",
         },
         {
-          title: "Thorium & Nuclear Batteries",
-          desc: "Future research interests in thorium fuel cycles and radioisotope power systems.",
+          title: "Nuclear Fuel Cells",
+          desc: "Advanced nuclear fuel cell architectures and compact radioisotope power systems for high-endurance applications.",
         },
       ],
     },

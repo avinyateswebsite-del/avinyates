@@ -1,0 +1,87 @@
+const en = {
+  common: {
+    brandName: "AVINYATES INDIA",
+    tagline: "Inspiring Innovation",
+    exploreMission: "Explore Our Mission",
+    exploreBusinesses: "Explore Businesses",
+    scroll: "SCROLL",
+    ourMission: "OUR MISSION",
+    allRightsReserved: "All rights reserved.",
+  },
+  nav: {
+    ourTeam: "Our Team",
+    businesses: "Businesses",
+    fmcg: "FMCG / Clean Food",
+    aerospace: "Aerospace & Defence",
+    energy: "Next-Gen Energy",
+    gulpit: "Gulpit Collection",
+    snackys: "Snacky's Chips",
+    selectLanguage: "Select Language",
+  },
+  hero: {
+    eyebrow: "AVINYATES GLOBAL",
+    word1: "Inspire.",
+    word2: "Innovate.",
+    word3: "Ignite.",
+    subtext: "Pioneering breakthrough ventures and next-generation technologies to unlock futuristic opportunities for mankind.",
+    missionStatementPart1: "To be the planet's",
+    missionStatementHighlight: "most innovative",
+    missionStatementPart2: "enterprise by creating futuristic opportunities for mankind.",
+  },
+  loading: {
+    replay: "Replay Loading",
+    continue: "Enter Experience",
+  },
+  team: {
+    eyebrow: "AVINYATES LEADERSHIP",
+    title: "The Pioneers Shaping Tomorrow",
+    subtitle: "A united syndicate of innovators, aerospace engineers, food scientists, and clean energy researchers forging the future of global enterprise.",
+    backToHome: "Return to Home",
+    keyFocus: "Core Focus Areas",
+  },
+  fmcg: {
+    eyebrow: "AVINYATES FMCG",
+    title: "Clean Food Revolution",
+    subtitle: "100% preservative-free, zero chemicals, and zero added sugar across two game-changing consumer brands.",
+    gulpitTitle: "GULPIT",
+    gulpitSubtitle: "Bold Flavours, Clean Promise. Exotic sauces, chutneys, and tropical fruit fusions crafted for the modern palate.",
+    snackysTitle: "SNACKY'S",
+    snackysSubtitle: "Gourmet V-shaped vacuum-cooked chips crafted from natural roots, fruits, and organic seasonings.",
+    exploreGulpit: "Explore Gulpit Brand",
+    exploreSnackys: "Explore Snacky's Brand",
+  },
+  aerospace: {
+    eyebrow: "AEROSPACE & DEFENCE",
+    title: "Frontier Autonomous & Propulsion Systems",
+    subtitle: "Developing sovereign, precision-engineered aeronautical platforms, autonomous systems, and advanced propulsion technologies.",
+  },
+  energy: {
+    eyebrow: "NEXT-GENERATION ENERGY",
+    title: "Powering Tomorrow with Zero Emissions",
+    subtitle: "Planning to enter hydrogen and Thorium-based Small Medium Reactors (SMRs) and nuclear fuel cell innovation in the future.",
+  },
+  gulpit: {
+    eyebrow: "GULPIT FOODS",
+    headline: "Bold Flavours, Clean Promise.",
+    description: "Handcrafted gourmet sauces, relishes, and exotic fruit spreads. Free from artificial preservatives, thickeners, or artificial colors.",
+    savouryTitle: "Savoury Collection",
+    fruitTitle: "Fruit Fusion Collection",
+    ingredients: "Ingredients",
+    pairings: "Perfect Pairings",
+    viewDetails: "View Details",
+    close: "Close",
+  },
+  snackys: {
+    eyebrow: "SNACKY'S GOURMET",
+    headline: "V-Shaped Gourmet Root & Fruit Chips",
+    description: "Vacuum-cooked at low temperatures to lock in genuine flavor, fiber, and vibrant natural color with 70% less oil absorption.",
+    ingredients: "Key Ingredients",
+    pairings: "Tasting Notes & Pairings",
+    viewDetails: "Explore Can",
+    close: "Close",
+  },
+};
+
+export default en;
+export type TranslationKeys = typeof en;
+

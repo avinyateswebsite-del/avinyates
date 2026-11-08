@@ -284,24 +284,24 @@ export default function SnackysPage() {
             </div>
           </div>
 
-          {/* Right Column: Dummy Video Space with Play Icon */}
+          {/* Right Column: Video Showcase with Dedicated MP4 */}
           <div className="lg:col-span-7 relative">
             <div
               onClick={() => setIsVideoModalOpen(true)}
               className="relative w-full aspect-video sm:aspect-[16/10] rounded-3xl overflow-hidden border border-white/15 bg-black/60 shadow-[0_25px_60px_rgba(0,0,0,0.9)] group cursor-pointer"
             >
-              {/* Culinary Video Background Preview */}
-              <Image
-                src="/brands/snackys/video_preview.jpg"
-                alt="Watch Our Vacuum Roasting Process"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90"
+              {/* Dedicated Snacky's Background Video (Autoplay loop muted) */}
+              <video
+                src="/brands/snackys/snackys_video.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
               />
 
               {/* Dark Overlay with Ambient Glow */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40 group-hover:via-black/20 transition-colors" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30 group-hover:via-black/10 transition-colors" />
 
               {/* Central Play Icon Button */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
@@ -320,7 +320,7 @@ export default function SnackysPage() {
                     Watch Our Process
                   </span>
                   <span className="text-xs text-neutral-400 font-mono tracking-wider mt-1 block">
-                    02:15 &bull; 4K Cinematic
+                    Cinematic Brand Film
                   </span>
                 </div>
               </div>
@@ -488,85 +488,85 @@ export default function SnackysPage() {
         {/* SECTION 5: 3 CORE CRAFT PILLARS (SMART FRYING, NATURAL CHARACTER, INNOVATION) */}
         {/* ========================================================================= */}
         <section id="pillars" className="border-t border-white/10 pt-16 sm:pt-20 mb-24 sm:mb-32">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-14">
             {/* Pillar 1: Smart Frying */}
-            <div className="flex items-start gap-4 sm:gap-5">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
-                <svg className="w-9 h-9 text-[#00BFFF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <div className="flex flex-col sm:flex-row items-start gap-5">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
+                <svg className="w-12 h-12 text-[#00BFFF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                   <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-                  <path d="M12 9v6m-3-3l3 3 3-3" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M12 9v6m-2.5-2.5l2.5 2.5 2.5-2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
               <div>
                 <span
-                  className="text-[11px] font-mono tracking-[0.24em] text-[#00BFFF] uppercase block mb-1"
+                  className="text-xs font-mono tracking-[0.25em] text-[#00BFFF] uppercase block mb-1.5"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
                   01 / SMART FRYING
                 </span>
                 <h3
-                  className="text-xl sm:text-2xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                  className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
-                  Big Crunch. Less Oil.*
+                  Big Crunch.<br />Less Oil.*
                 </h3>
-                <p className="text-xs sm:text-[13px] text-neutral-400 font-light leading-relaxed">
+                <p className="text-sm text-neutral-300 font-light leading-relaxed max-w-sm">
                   Advanced vacuum frying and effective de-oiling transform pineapple, jackfruit and sweet potato into irresistibly crisp bites with less oil than conventional frying.*
                 </p>
               </div>
             </div>
 
             {/* Pillar 2: Natural Character */}
-            <div className="flex items-start gap-4 sm:gap-5">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
-                <Leaf className="w-9 h-9 stroke-[1.8] text-[#00BFFF]" />
+            <div className="flex flex-col sm:flex-row items-start gap-5">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
+                <Leaf className="w-12 h-12 stroke-[1.6] text-[#00BFFF]" />
               </div>
               <div>
                 <span
-                  className="text-[11px] font-mono tracking-[0.24em] text-[#00BFFF] uppercase block mb-1"
+                  className="text-xs font-mono tracking-[0.25em] text-[#00BFFF] uppercase block mb-1.5"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
                   02 / NATURAL CHARACTER
                 </span>
                 <h3
-                  className="text-xl sm:text-2xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                  className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
-                  Lower Heat. Louder Flavour.
+                  Lower Heat.<br />Louder Flavour.
                 </h3>
-                <p className="text-xs sm:text-[13px] text-neutral-400 font-light leading-relaxed">
+                <p className="text-sm text-neutral-300 font-light leading-relaxed max-w-sm">
                   Our reduced-pressure process helps preserve the distinctive flavours and vibrant colours of tropical fruits and wholesome roots.
                 </p>
               </div>
             </div>
 
             {/* Pillar 3: Innovation */}
-            <div className="flex items-start gap-4 sm:gap-5">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
-                <FlaskConical className="w-9 h-9 stroke-[1.8] text-[#00BFFF]" />
+            <div className="flex flex-col sm:flex-row items-start gap-5">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 text-[#00BFFF]">
+                <FlaskConical className="w-12 h-12 stroke-[1.6] text-[#00BFFF]" />
               </div>
               <div>
                 <span
-                  className="text-[11px] font-mono tracking-[0.24em] text-[#00BFFF] uppercase block mb-1"
+                  className="text-xs font-mono tracking-[0.25em] text-[#00BFFF] uppercase block mb-1.5"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
                   03 / INNOVATION
                 </span>
                 <h3
-                  className="text-xl sm:text-2xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                  className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
-                  Nature&apos;s Variety. Reimagined.
+                  Nature&apos;s Variety.<br />Reimagined.
                 </h3>
-                <p className="text-xs sm:text-[13px] text-neutral-400 font-light leading-relaxed">
+                <p className="text-sm text-neutral-300 font-light leading-relaxed max-w-sm">
                   Extraordinary fruits and roots meet smarter frying technology&mdash;bringing tropical flavour and an exciting crunch to every Snackys bite.
                 </p>
               </div>
             </div>
 
             {/* Disclaimer Footnote */}
-            <div className="md:col-span-3 pt-2">
-              <p className="text-[11px] sm:text-xs text-neutral-500 font-light tracking-wide">
+            <div className="md:col-span-3 pt-6">
+              <p className="text-xs text-neutral-400 font-light tracking-wide">
                 *Less-oil claim subject to comparative finished-product testing.
               </p>
             </div>
@@ -729,45 +729,32 @@ export default function SnackysPage() {
       )}
 
       {/* ========================================================================= */}
-      {/* MODAL 2: DUMMY VIDEO STATUS MODAL */}
+      {/* FULLSCREEN VIDEO MODAL (Plays the dedicated Snacky's video with audio & controls) */}
       {/* ========================================================================= */}
       {isVideoModalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/95 backdrop-blur-2xl animate-in fade-in duration-200"
           onClick={() => setIsVideoModalOpen(false)}
         >
           <div
-            className="relative w-full max-w-xl bg-neutral-950 border border-white/15 rounded-3xl p-6 sm:p-8 text-center shadow-[0_25px_60px_rgba(0,0,0,0.95)]"
+            className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden border border-white/20 bg-black shadow-[0_30px_90px_rgba(0,0,0,0.95)] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setIsVideoModalOpen(false)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-neutral-400 hover:text-white transition-colors"
+              className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/70 hover:bg-white/20 text-white/80 hover:text-white transition-colors border border-white/20 backdrop-blur-md"
+              aria-label="Close video"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
 
-            <div className="w-16 h-16 rounded-full bg-[#00BFFF]/10 border border-[#00BFFF]/30 flex items-center justify-center text-[#00BFFF] mx-auto mb-4">
-              <Play className="w-7 h-7 fill-current ml-1" />
-            </div>
-
-            <h3
-              className="text-xl sm:text-2xl font-bold text-white mb-2"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            >
-              Vacuum-Cooking Production Video
-            </h3>
-
-            <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed mb-6">
-              Our 4K cinematic documentary showing low-temperature vacuum frying, crisping techniques, and precision seasoning will be streamed here shortly.
-            </p>
-
-            <button
-              onClick={() => setIsVideoModalOpen(false)}
-              className="px-6 py-2 rounded-full border border-white/20 hover:border-white/50 bg-white/5 text-xs text-white font-light tracking-wide transition-colors"
-            >
-              Close Preview
-            </button>
+            <video
+              src="/brands/snackys/snackys_video.mp4"
+              controls
+              autoPlay
+              playsInline
+              className="w-full h-full object-contain bg-black"
+            />
           </div>
         </div>
       )}

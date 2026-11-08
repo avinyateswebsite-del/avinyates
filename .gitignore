@@ -23,6 +23,12 @@
 # misc
 .DS_Store
 *.pem
+/gulpit vid.MP4
+/snackys vid.mp4
+/WhatsApp Video*.mp4
+/test_*.mp4
+/test_*.jpg
+/frame_*.jpg
 
 # debug
 npm-debug.log*

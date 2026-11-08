@@ -5,14 +5,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import Navbar from "../navigation/Navbar";
+import { useTranslation } from "@/i18n/LanguageContext";
 
 interface HeroSectionProps {
   onReplayLoading?: () => void;
 }
 
 export default function HeroSection({ onReplayLoading }: HeroSectionProps) {
+  const { t, languageConfig } = useTranslation();
+
   return (
-    <div className="relative w-full bg-black text-white select-none">
+    <div
+      className="relative w-full bg-black text-white select-none"
+      style={languageConfig.fontFamily ? { fontFamily: languageConfig.fontFamily } : undefined}
+    >
       {/* 4K Rotating Earth Background Video - Permanently Fixated in Background */}
       <div className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
         <video
@@ -41,30 +47,24 @@ export default function HeroSection({ onReplayLoading }: HeroSectionProps) {
               className="text-[11px] sm:text-xs tracking-[0.3em] text-neutral-300 uppercase font-medium"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              AVINYATES GLOBAL
+              {t.hero.eyebrow}
             </span>
           </div>
 
           {/* Three-Word Headline: Inspire, Innovate, Ignite */}
-          <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[78px] text-white font-light leading-[1.08] tracking-tight"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            <span>Inspire.</span>{" "}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[78px] text-white font-light leading-[1.08] tracking-tight">
+            <span>{t.hero.word1}</span>{" "}
             <span className="text-[#38bdf8] font-normal drop-shadow-[0_0_35px_rgba(56,189,248,0.55)]">
-              Innovate.
+              {t.hero.word2}
             </span>{" "}
             <span className="font-medium text-white drop-shadow-[0_2px_20px_rgba(255,255,255,0.2)]">
-              Ignite.
+              {t.hero.word3}
             </span>
           </h1>
 
           {/* Refined introductory subtext */}
-          <p
-            className="mt-6 sm:mt-7 text-sm sm:text-base md:text-lg lg:text-xl text-neutral-300 font-light max-w-xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            Pioneering breakthrough ventures and next-generation technologies to unlock futuristic opportunities for mankind.
+          <p className="mt-6 sm:mt-7 text-sm sm:text-base md:text-lg lg:text-xl text-neutral-300 font-light max-w-xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+            {t.hero.subtext}
           </p>
 
           {/* Action Button - Pure Boxless Typography Link */}
@@ -72,10 +72,9 @@ export default function HeroSection({ onReplayLoading }: HeroSectionProps) {
             <a
               href="#mission"
               className="inline-flex items-center gap-3 text-sm sm:text-base text-white hover:text-cyan-400 font-light tracking-wider transition-colors duration-300 group select-none"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               <span className="border-b border-white/40 group-hover:border-cyan-400 pb-0.5 transition-colors">
-                Explore Our Mission
+                {t.common.exploreMission}
               </span>
               <span className="transition-transform duration-300 group-hover:translate-y-1 text-cyan-400 text-base">
                 ↓
@@ -91,7 +90,7 @@ export default function HeroSection({ onReplayLoading }: HeroSectionProps) {
           aria-label="Scroll to Mission Statement"
         >
           <span className="text-[10px] tracking-[0.25em] text-neutral-400 uppercase mb-2 font-medium group-hover:text-cyan-400 transition-colors">
-            SCROLL
+            {t.common.scroll}
           </span>
           <div className="w-[1px] h-7 bg-gradient-to-b from-transparent via-white/50 to-white/90 group-hover:via-cyan-400 group-hover:to-cyan-400 transition-colors" />
           <ChevronDown className="w-4 h-4 text-white/80 group-hover:text-cyan-400 transition-colors animate-bounce mt-1" />
@@ -111,20 +110,17 @@ export default function HeroSection({ onReplayLoading }: HeroSectionProps) {
               className="text-[11px] sm:text-xs tracking-[0.28em] text-neutral-200 uppercase font-medium"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              OUR MISSION
+              {t.common.ourMission}
             </span>
           </div>
 
           {/* Mission Headline exactly like template */}
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] text-white font-normal leading-[1.18] tracking-tight"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            To be the planet&apos;s{" "}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] text-white font-normal leading-[1.18] tracking-tight">
+            {t.hero.missionStatementPart1}{" "}
             <span className="text-[#38bdf8] font-normal drop-shadow-[0_0_25px_rgba(56,189,248,0.6)]">
-              most innovative
+              {t.hero.missionStatementHighlight}
             </span>{" "}
-            enterprise by creating futuristic opportunities for mankind.
+            {t.hero.missionStatementPart2}
           </h2>
 
           {/* Action Link - Pure Boxless Typography Link */}
@@ -132,10 +128,9 @@ export default function HeroSection({ onReplayLoading }: HeroSectionProps) {
             <Link
               href="/businesses/fmcg"
               className="inline-flex items-center gap-3 text-sm sm:text-base text-white hover:text-cyan-400 font-light tracking-wider transition-colors duration-300 group select-none"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               <span className="border-b border-white/40 group-hover:border-cyan-400 pb-0.5 transition-colors">
-                Explore Businesses
+                {t.common.exploreBusinesses}
               </span>
               <span className="transition-transform duration-300 group-hover:translate-x-1.5 text-cyan-400 text-base">
                 →

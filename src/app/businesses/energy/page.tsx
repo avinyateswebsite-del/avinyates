@@ -23,88 +23,105 @@ export default function EnergyPage() {
       <Navbar currentPath="/businesses/energy" />
 
       {/* Hero Section */}
-      <section className="relative z-10 min-h-[85vh] pt-32 sm:pt-40 md:pt-48 pb-20 px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 flex flex-col justify-center overflow-hidden">
-        <div className="relative max-w-5xl mx-auto w-full z-10">
-          <div className="flex items-center gap-2.5 mb-6">
-            <span className="w-6 h-[2px] bg-[#38bdf8] rounded-full shadow-[0_0_12px_#38bdf8]" />
+      <section className="relative z-10 min-h-[85vh] pt-28 sm:pt-36 md:pt-44 pb-20 px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 flex flex-col justify-center overflow-hidden">
+        <div className="relative max-w-4xl mx-auto w-full z-10">
+          {/* Eyebrow */}
+          <div className="flex items-center gap-2 mb-4 sm:mb-6">
             <span
               className="text-xs sm:text-sm tracking-[0.32em] text-[#38bdf8] uppercase font-semibold"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              NEXT-GENERATION ENERGY
+              04 / ENERGY
             </span>
           </div>
 
+          {/* Headline */}
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] text-white font-light leading-[1.08] tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[76px] text-white font-light leading-[1.08] tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Next-Generation{" "}
-            <span className="text-[#38bdf8] font-normal drop-shadow-[0_0_35px_rgba(56,189,248,0.5)]">
-              Energy
-            </span>
+            Next-Generation<br />
+            Energy
           </h1>
 
+          {/* Subheading in Cyan */}
           <p
-            className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-neutral-300 font-light max-w-2xl leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
+            className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-[#38bdf8] font-normal tracking-wide drop-shadow-[0_0_20px_rgba(56,189,248,0.4)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Exploring green hydrogen, compact hydrogen fuel cells and thorium-based nuclear energy for a resilient energy future.
+            Hydrogen &amp; Thorium SMRs • Nuclear Fuel Cells
           </p>
 
-          {/* Pillars - Frameless Open Layout (Zero Boxes) */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-14 mt-20">
-            <div className="flex flex-col">
-              <span className="text-xs font-mono tracking-[0.25em] text-[#38bdf8] uppercase mb-3">
-                01 / HYDROGEN
-              </span>
+          {/* Main Description */}
+          <p
+            className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-neutral-300 font-light max-w-2xl leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            We are planning to enter hydrogen and Thorium-based Small Medium Reactors (SMRs) and nuclear fuel cell innovation in the future.
+          </p>
+
+          {/* Stacked Pillars with Horizontal Separator Lines */}
+          <div className="flex flex-col mt-14 sm:mt-16 space-y-10 sm:space-y-12">
+            {/* Pillar 1 */}
+            <div className="relative pt-6">
+              <div className="w-12 h-[2px] bg-[#38bdf8] mb-6 shadow-[0_0_8px_#38bdf8]" />
               <h3
-                className="text-2xl sm:text-3xl text-white font-light tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                Green Hydrogen
+                Hydrogen Energy
               </h3>
-              <p className="text-sm text-neutral-400 font-light leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-                Renewable-powered hydrogen production and storage.
+              <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed max-w-xl">
+                Next-generation green hydrogen generation, storage, and industrial energy solutions.
               </p>
+              <div className="w-full h-[1px] bg-white/15 mt-8 sm:mt-10" />
             </div>
 
-            <div className="flex flex-col">
-              <span className="text-xs font-mono tracking-[0.25em] text-[#38bdf8] uppercase mb-3">
-                02 / FUEL CELLS
-              </span>
+            {/* Pillar 2 */}
+            <div className="relative pt-2">
+              <div className="w-12 h-[2px] bg-[#38bdf8] mb-6 shadow-[0_0_8px_#38bdf8]" />
               <h3
-                className="text-2xl sm:text-3xl text-white font-light tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                Compact Hydrogen Fuel Cells
+                Thorium Small Medium Reactors
               </h3>
-              <p className="text-sm text-neutral-400 font-light leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-                Exploring modular power for mobility, backup and distributed energy.
+              <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed max-w-xl">
+                Pioneering safe, proliferation-resistant Thorium-based SMR technology for continuous clean baseload power.
               </p>
+              <div className="w-full h-[1px] bg-white/15 mt-8 sm:mt-10" />
             </div>
 
-            <div className="flex flex-col">
-              <span className="text-xs font-mono tracking-[0.25em] text-[#38bdf8] uppercase mb-3">
-                03 / ADVANCED NUCLEAR
-              </span>
+            {/* Pillar 3 */}
+            <div className="relative pt-2">
+              <div className="w-12 h-[2px] bg-[#38bdf8] mb-6 shadow-[0_0_8px_#38bdf8]" />
               <h3
-                className="text-2xl sm:text-3xl text-white font-light tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                Thorium &amp; Nuclear Batteries
+                Nuclear Fuel Cells
               </h3>
-              <p className="text-sm text-neutral-400 font-light leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-                Future research interests in thorium fuel cycles and radioisotope power systems.
+              <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed max-w-xl">
+                Advanced nuclear fuel cell architectures and compact radioisotope power systems for high-endurance applications.
               </p>
             </div>
+          </div>
+
+          {/* Research Vision Tagline */}
+          <div className="mt-16 sm:mt-20 flex justify-center">
+            <span
+              className="text-xs sm:text-sm tracking-[0.35em] text-[#38bdf8] uppercase font-medium drop-shadow-[0_0_12px_rgba(56,189,248,0.5)]"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              OUR RESEARCH VISION
+            </span>
           </div>
         </div>
       </section>
 
-      {/* Footer - Minimalist Boxless */}
-      <footer className="relative z-10 w-full py-14 px-6 sm:px-10 md:px-14 lg:px-20 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
-        <div>© 2026 AVINYATES INDIA. Energy Division.</div>
+      {/* Footer */}
+      <footer className="relative z-10 w-full py-10 px-6 sm:px-10 md:px-14 lg:px-20 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
+        <div>© 2026 AVINYATES INDIA. All Rights Reserved.</div>
         <div className="flex items-center gap-6">
           <Link href="/" className="text-neutral-400 hover:text-white transition-colors">Home</Link>
           <span className="text-neutral-600">•</span>

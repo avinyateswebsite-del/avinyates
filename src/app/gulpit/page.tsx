@@ -333,24 +333,24 @@ export default function GulpitPage() {
             </div>
           </div>
 
-          {/* Right Column: Dummy Video Space with Play Icon */}
+          {/* Right Column: Video Showcase with Dedicated MP4 */}
           <div className="lg:col-span-7 relative">
             <div
               onClick={() => setIsVideoModalOpen(true)}
               className="relative w-full aspect-video sm:aspect-[16/10] rounded-3xl overflow-hidden border border-white/15 bg-black/60 shadow-[0_25px_60px_rgba(0,0,0,0.9)] group cursor-pointer"
             >
-              {/* Culinary Video Background Preview */}
-              <Image
-                src="/brands/gulpit/video_preview.png"
-                alt="Watch Our Production Process"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90"
+              {/* Dedicated Gulpit Background Video (Autoplay loop muted) */}
+              <video
+                src="/brands/gulpit/gulpit_video.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
               />
 
               {/* Dark Overlay with Ambient Glow */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40 group-hover:via-black/20 transition-colors" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30 group-hover:via-black/10 transition-colors" />
 
               {/* Central Play Icon Button */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
@@ -369,7 +369,7 @@ export default function GulpitPage() {
                     Watch Our Process
                   </span>
                   <span className="text-xs text-neutral-400 font-mono tracking-wider mt-1 block">
-                    02:18 &bull; 4K Cinematic
+                    Cinematic Brand Film
                   </span>
                 </div>
               </div>
@@ -671,38 +671,32 @@ export default function GulpitPage() {
       )}
 
       {/* ========================================================================= */}
-      {/* DUMMY VIDEO MODAL (Activated when user clicks play button) */}
+      {/* FULLSCREEN VIDEO MODAL (Plays the dedicated Gulpit video with audio & controls) */}
       {/* ========================================================================= */}
       {isVideoModalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-2xl animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/95 backdrop-blur-2xl animate-in fade-in duration-200"
           onClick={() => setIsVideoModalOpen(false)}
         >
           <div
-            className="relative w-full max-w-3xl aspect-video rounded-3xl overflow-hidden border border-white/20 bg-neutral-950 flex flex-col items-center justify-center text-center p-8 shadow-2xl"
+            className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden border border-white/20 bg-black shadow-[0_30px_90px_rgba(0,0,0,0.95)] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             <button
               onClick={() => setIsVideoModalOpen(false)}
-              className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-neutral-300 hover:text-white transition-colors"
+              className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/70 hover:bg-white/20 text-white/80 hover:text-white transition-colors border border-white/20 backdrop-blur-md"
+              aria-label="Close video"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="w-16 h-16 rounded-full bg-[#00BFFF]/20 border border-[#00BFFF] flex items-center justify-center text-[#00BFFF] mb-4">
-              <Play className="w-7 h-7 fill-current ml-0.5" />
-            </div>
-
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-              Gulpit Production Process Video
-            </h3>
-            <p className="text-xs sm:text-sm text-neutral-400 max-w-md font-light">
-              4K cinematic documentary showing vacuum concentration, aseptic sterile filling, and farm-origin ingredient sourcing at the Palakkad facility.
-            </p>
-            <span className="mt-4 text-xs font-mono text-[#00BFFF] px-3.5 py-1.5 rounded-full bg-[#00BFFF]/10 border border-[#00BFFF]/30">
-              Video Slot Ready &bull; Media Can Be Replaced Anytime
-            </span>
+            <video
+              src="/brands/gulpit/gulpit_video.mp4"
+              controls
+              autoPlay
+              playsInline
+              className="w-full h-full object-contain bg-black"
+            />
           </div>
         </div>
       )}
