@@ -21,18 +21,27 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const langDropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdowns on outside click
+  // Close dropdowns on outside click (desktop only)
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    function handleClickOutside(event: MouseEvent | TouchEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setDropdownOpen(false);
       }
-      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
+      // Only close desktop language dropdown if clicking outside desktop ref
+      if (
+        window.innerWidth >= 768 &&
+        langDropdownRef.current &&
+        !langDropdownRef.current.contains(event.target as Node)
+      ) {
         setLangDropdownOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, []);
 
   const activeLang = languages.find((l) => l.code === language) || languages[0];
@@ -294,21 +303,55 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                 {t.nav.energy}
               </Link>
             </div>
+
+            {/* Language Selector in Mobile Menu */}
+            <div className="py-2 flex flex-col gap-2">
+              <span className="text-neutral-400 text-xs tracking-widest uppercase">
+                {t.nav.selectLanguage}
+              </span>
+              <div className="grid grid-cols-2 gap-2 pt-1 max-h-[220px] overflow-y-auto pr-1">
+                {languages.map((lang) => {
+                  const isSelected = lang.code === language;
+                  return (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleSelectLanguage(lang.code)}
+                      className={`flex flex-col items-start px-3 py-2 rounded-xl text-left transition-all ${
+                        isSelected
+                          ? "bg-[#00BFFF]/20 border border-[#00BFFF]/50 text-[#00BFFF]"
+                          : "bg-white/5 border border-white/10 text-neutral-300 hover:text-white hover:bg-white/10"
+                      }`}
+                    >
+                      <span className="text-xs font-medium text-white">{lang.nativeName}</span>
+                      <span className="text-[10px] text-neutral-400">{lang.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       )}
 
       {/* Mobile Language Picker Modal */}
       {langDropdownOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-neutral-900 border border-white/20 rounded-2xl w-full max-w-sm max-h-[80vh] overflow-y-auto p-4 flex flex-col gap-2 shadow-2xl">
+        <div
+          className="md:hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={() => setLangDropdownOpen(false)}
+        >
+          <div
+            className="bg-neutral-900 border border-white/20 rounded-2xl w-full max-w-sm max-h-[80vh] overflow-y-auto p-4 flex flex-col gap-2 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center justify-between pb-2 border-b border-white/10">
               <span className="text-xs uppercase tracking-widest text-[#00BFFF] font-mono">
                 {t.nav.selectLanguage}
               </span>
               <button
+                type="button"
                 onClick={() => setLangDropdownOpen(false)}
-                className="text-neutral-400 hover:text-white text-xs px-2 py-1"
+                className="text-neutral-400 hover:text-white text-base px-2 py-1 leading-none"
+                aria-label="Close language selector"
               >
                 ✕
               </button>
@@ -319,11 +362,12 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                 return (
                   <button
                     key={lang.code}
+                    type="button"
                     onClick={() => handleSelectLanguage(lang.code)}
-                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-sm transition-all ${
+                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-sm transition-all cursor-pointer ${
                       isSelected
                         ? "bg-[#00BFFF]/20 text-[#00BFFF]"
-                        : "text-neutral-200 hover:bg-white/10"
+                        : "text-neutral-200 hover:bg-white/10 active:bg-white/20"
                     }`}
                   >
                     <span>{lang.nativeName}</span>
