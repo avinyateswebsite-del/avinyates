@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronDown, Globe, Check } from "lucide-react";
 import { useTranslation } from "@/i18n/LanguageContext";
 import { SupportedLanguageCode } from "@/i18n/config";
+import { setSiteLanguage } from "@/utils/translator";
 
 interface NavbarProps {
   currentPath?: string;
@@ -38,6 +39,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
 
   const handleSelectLanguage = (code: string) => {
     setLanguage(code as SupportedLanguageCode);
+    setSiteLanguage(code);
     setLangDropdownOpen(false);
     setMobileMenuOpen(false);
   };

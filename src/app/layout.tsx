@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GoogleTranslator from "@/components/i18n/GoogleTranslator";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-black text-white antialiased selection:bg-cyan-500/30 selection:text-white overflow-x-hidden m-0 p-0">
+        <GoogleTranslator />
         <LanguageProvider>
           {children}
         </LanguageProvider>
