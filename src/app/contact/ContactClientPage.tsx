@@ -13,66 +13,49 @@ import {
   CheckCircle2,
   AlertCircle,
   Building2,
-  Sparkles,
   ArrowRight,
-  Globe2,
 } from "lucide-react";
 
 export default function ContactClientPage() {
-  const { t, languageConfig, dir } = useTranslation();
-
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    division: "General Inquiry",
-    subject: "",
-    message: "",
-  });
+  const { languageConfig, dir } = useTranslation();
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [resultMessage, setResultMessage] = useState("");
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setStatus("submitting");
-    setErrorMessage("");
+    setResultMessage("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    // Official Web3Forms Access Key provided by user
+    formData.append("access_key", "a65b670c-74ea-41e4-923c-dc4da2d20465");
+    formData.append("from_name", "Avinyates Website Lead");
+    formData.append("subject", `New Inquiry from ${formData.get("name") || "Website Visitor"}`);
 
     try {
-      const res = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
-      const data = await res.json();
+      const data = await response.json();
 
-      if (res.ok) {
+      if (data.success) {
         setStatus("success");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          division: "General Inquiry",
-          subject: "",
-          message: "",
-        });
+        setResultMessage(
+          data.message || "Thank you for reaching out! Your message has been sent successfully to the Avinyates team."
+        );
+        form.reset();
       } else {
         setStatus("error");
-        setErrorMessage(data.error || "Failed to send message. Please try again.");
+        setResultMessage(data.message || "Failed to submit. Please try again or email contact@avinyates.com.");
       }
     } catch {
       setStatus("error");
-      setErrorMessage("Network error. Please check your connection and try again.");
+      setResultMessage("Network error. Please check your internet connection and try again.");
     }
   };
 
@@ -187,65 +170,9 @@ export default function ContactClientPage() {
                   </div>
                 </div>
               </div>
-
-              {/* Division Directory Card */}
-              <div className="p-6 sm:p-8 rounded-2xl bg-neutral-900/40 border border-white/10 backdrop-blur-md">
-                <div className="flex items-center gap-2 mb-4">
-                  <Building2 className="w-4 h-4 text-[#00BFFF]" />
-                  <span className="text-xs uppercase tracking-widest text-[#00BFFF] font-mono">
-                    Key Divisions
-                  </span>
-                </div>
-
-                <div className="space-y-3">
-                  <Link
-                    href="/gulpit"
-                    className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all group"
-                  >
-                    <div>
-                      <span className="text-sm text-white font-medium block">Gulpit</span>
-                      <span className="text-[11px] text-neutral-400">Cold-Pressed Spreads &amp; Dips</span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#00BFFF] group-hover:translate-x-1 transition-all" />
-                  </Link>
-
-                  <Link
-                    href="/snackys"
-                    className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all group"
-                  >
-                    <div>
-                      <span className="text-sm text-white font-medium block">Snackys</span>
-                      <span className="text-[11px] text-neutral-400">Gourmet Vacuum Cooked Chips</span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#00BFFF] group-hover:translate-x-1 transition-all" />
-                  </Link>
-
-                  <Link
-                    href="/businesses/aerospace-defence"
-                    className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all group"
-                  >
-                    <div>
-                      <span className="text-sm text-white font-medium block">Aerospace &amp; Defence</span>
-                      <span className="text-[11px] text-neutral-400">Autonomous UAV &amp; Propulsion</span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#00BFFF] group-hover:translate-x-1 transition-all" />
-                  </Link>
-
-                  <Link
-                    href="/businesses/energy"
-                    className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all group"
-                  >
-                    <div>
-                      <span className="text-sm text-white font-medium block">Clean Energy</span>
-                      <span className="text-[11px] text-neutral-400">Hydrogen &amp; Thorium SMRs</span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#00BFFF] group-hover:translate-x-1 transition-all" />
-                  </Link>
-                </div>
-              </div>
             </div>
 
-            {/* Right Column: Interactive Contact Form (7 cols) */}
+            {/* Right Column: Web3Forms Contact Form (7 cols) */}
             <div className="lg:col-span-7">
               <div className="p-6 sm:p-10 rounded-2xl bg-neutral-900/70 border border-white/10 backdrop-blur-2xl shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00BFFF]/60 to-transparent" />
@@ -265,24 +192,27 @@ export default function ContactClientPage() {
                     <div className="w-14 h-14 rounded-full bg-[#00BFFF]/20 flex items-center justify-center mb-4 text-[#00BFFF]">
                       <CheckCircle2 className="w-8 h-8" />
                     </div>
-                    <h3 className="text-xl font-medium text-white mb-2">Message Received</h3>
+                    <h3 className="text-xl font-medium text-white mb-2">Message Sent Successfully</h3>
                     <p className="text-sm text-neutral-300 max-w-md leading-relaxed mb-6">
-                      Thank you for contacting Avinyates India. Your message has been routed to our corporate relations team.
+                      {resultMessage}
                     </p>
                     <button
                       type="button"
                       onClick={() => setStatus("idle")}
-                      className="px-6 py-2 rounded-full border border-white/20 text-xs uppercase tracking-wider text-white hover:bg-white/10 transition-all"
+                      className="px-6 py-2 rounded-full border border-white/20 text-xs uppercase tracking-wider text-white hover:bg-white/10 transition-all cursor-pointer"
                     >
                       Send Another Message
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form onSubmit={onSubmit} className="space-y-5">
+                    {/* Botpoison / honeypot protection */}
+                    <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+
                     {status === "error" && (
                       <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center gap-3 text-red-300 text-sm">
                         <AlertCircle className="w-5 h-5 shrink-0 text-red-400" />
-                        <span>{errorMessage}</span>
+                        <span>{resultMessage}</span>
                       </div>
                     )}
 
@@ -296,8 +226,6 @@ export default function ContactClientPage() {
                           type="text"
                           name="name"
                           required
-                          value={formData.name}
-                          onChange={handleChange}
                           placeholder="e.g. Rahul Sharma"
                           className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/15 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-[#00BFFF] focus:ring-1 focus:ring-[#00BFFF] transition-all"
                         />
@@ -312,8 +240,6 @@ export default function ContactClientPage() {
                           type="email"
                           name="email"
                           required
-                          value={formData.email}
-                          onChange={handleChange}
                           placeholder="name@company.com"
                           className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/15 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-[#00BFFF] focus:ring-1 focus:ring-[#00BFFF] transition-all"
                         />
@@ -329,8 +255,6 @@ export default function ContactClientPage() {
                         <input
                           type="tel"
                           name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
                           placeholder="+91 98765 43210"
                           className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/15 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-[#00BFFF] focus:ring-1 focus:ring-[#00BFFF] transition-all"
                         />
@@ -343,8 +267,7 @@ export default function ContactClientPage() {
                         </label>
                         <select
                           name="division"
-                          value={formData.division}
-                          onChange={handleChange}
+                          defaultValue="General Inquiry"
                           className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/15 text-white text-sm focus:outline-none focus:border-[#00BFFF] focus:ring-1 focus:ring-[#00BFFF] transition-all cursor-pointer"
                         >
                           <option value="General Inquiry" className="bg-neutral-900 text-white">General Inquiry</option>
@@ -366,8 +289,6 @@ export default function ContactClientPage() {
                       <input
                         type="text"
                         name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
                         placeholder="Partnership, distribution, or inquiry topic"
                         className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/15 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-[#00BFFF] focus:ring-1 focus:ring-[#00BFFF] transition-all"
                       />
@@ -382,8 +303,6 @@ export default function ContactClientPage() {
                         name="message"
                         required
                         rows={5}
-                        value={formData.message}
-                        onChange={handleChange}
                         placeholder="Tell us about your requirements or collaboration proposal..."
                         className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/15 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-[#00BFFF] focus:ring-1 focus:ring-[#00BFFF] transition-all resize-y"
                       />
@@ -396,7 +315,7 @@ export default function ContactClientPage() {
                       className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#00BFFF] to-[#0090ff] hover:from-[#38bdf8] hover:to-[#00BFFF] text-black font-semibold text-sm tracking-wide transition-all shadow-[0_0_20px_rgba(0,191,255,0.4)] hover:shadow-[0_0_30px_rgba(0,191,255,0.6)] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                     >
                       {status === "submitting" ? (
-                        <span>Sending message...</span>
+                        <span>Transmitting to Web3Forms...</span>
                       ) : (
                         <>
                           <span>Transmit Message</span>

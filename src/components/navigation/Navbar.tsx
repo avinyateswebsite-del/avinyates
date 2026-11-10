@@ -95,7 +95,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
         className="hidden md:flex items-center gap-6 lg:gap-10 xl:gap-12 text-sm md:text-[15px] lg:text-[17px] xl:text-[18px] font-normal drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
         style={{ fontFamily: "'Montserrat', sans-serif" }}
       >
-        {/* Our Team Link */}
+        {/* 1. Our Team Link */}
         <Link
           href="/team"
           className="text-neutral-200 hover:text-white transition-colors duration-200 tracking-wide whitespace-nowrap py-2"
@@ -103,15 +103,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
           {t.nav.ourTeam}
         </Link>
 
-        {/* Contact Link */}
-        <Link
-          href="/contact"
-          className="text-neutral-200 hover:text-white transition-colors duration-200 tracking-wide whitespace-nowrap py-2"
-        >
-          {t.common.getInTouch}
-        </Link>
-
-        {/* Businesses Dropdown Menu */}
+        {/* 2. Businesses Dropdown Menu */}
         <div
           ref={dropdownRef}
           className="relative py-2"
@@ -177,6 +169,14 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
             </div>
           )}
         </div>
+
+        {/* 3. Get in Touch Link */}
+        <Link
+          href="/contact"
+          className="text-neutral-200 hover:text-white transition-colors duration-200 tracking-wide whitespace-nowrap py-2"
+        >
+          {t.common.getInTouch}
+        </Link>
 
         {/* Global Multi-Language Selector Dropdown */}
         <div ref={langDropdownRef} className="relative py-2">
@@ -284,13 +284,6 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
             >
               {t.nav.ourTeam}
             </Link>
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-neutral-200 hover:text-cyan-400 py-2 border-b border-white/10"
-            >
-              {t.common.getInTouch}
-            </Link>
 
             <div className="py-2 border-b border-white/10 flex flex-col gap-2">
               <span className="text-neutral-400 text-xs tracking-widest uppercase">
@@ -318,6 +311,14 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                 {t.nav.energy}
               </Link>
             </div>
+
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-neutral-200 hover:text-cyan-400 py-2 border-b border-white/10"
+            >
+              {t.common.getInTouch}
+            </Link>
 
             {/* Language Selector in Mobile Menu */}
             <div className="py-2 flex flex-col gap-2">
