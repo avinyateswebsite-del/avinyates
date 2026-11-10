@@ -410,64 +410,101 @@ export default function AdminDashboardPage() {
             </div>
 
             {/* Flavours Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {gulpitItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="p-5 rounded-2xl bg-neutral-900/60 border border-white/10 hover:border-[#00BFFF]/40 transition-all flex flex-col justify-between group"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#00BFFF] px-2 py-0.5 rounded bg-[#00BFFF]/10">
-                        {item.tag || item.category}
-                      </span>
-                      <span className="text-xs text-neutral-500 font-mono">#{item.display_order}</span>
-                    </div>
-
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="relative w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden shrink-0 flex items-center justify-center p-1">
-                        <Image
-                          src={item.image_url}
-                          alt={item.name}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                      <div>
-                        <h3 className="text-base font-medium text-white">{item.name}</h3>
-                        <p className="text-xs text-neutral-400 capitalize">{item.category} collection</p>
-                      </div>
-                    </div>
-
-                    <p className="text-xs text-neutral-300 font-light line-clamp-2 mb-3">
-                      {item.short_desc}
-                    </p>
-
-                    <div className="text-[11px] text-neutral-400 space-y-1 mb-4 pt-2 border-t border-white/5">
-                      <div><strong className="text-neutral-300">Ingredients:</strong> {item.ingredients}</div>
-                      <div><strong className="text-neutral-300">Pairings:</strong> {item.pairings}</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-end gap-2 pt-3 border-t border-white/10">
-                    <button
-                      onClick={() => setEditingProduct(item)}
-                      className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs text-white flex items-center gap-1.5 transition-all cursor-pointer"
-                    >
-                      <Edit2 className="w-3.5 h-3.5" />
-                      <span>Edit</span>
-                    </button>
-                    <button
-                      onClick={() => handleDeleteProduct(item.id)}
-                      className="px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-xs text-red-300 flex items-center gap-1.5 transition-all cursor-pointer"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                      <span>Delete</span>
-                    </button>
-                  </div>
+            {gulpitItems.length === 0 ? (
+              <div className="p-8 rounded-2xl bg-neutral-900/40 border border-white/10 text-center space-y-4">
+                <AlertCircle className="w-8 h-8 text-amber-400 mx-auto" />
+                <div>
+                  <h3 className="text-sm font-medium text-white">No Gulpit flavours loaded yet</h3>
+                  <p className="text-xs text-neutral-400 mt-1 max-w-md mx-auto">
+                    Ensure your Supabase credentials are configured or click below to seed all 10 default Gulpit flavours into your database.
+                  </p>
                 </div>
-              ))}
-            </div>
+                <button
+                  onClick={async () => {
+                    setLoadingData(true);
+                    await fetch("/api/admin/products", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify([
+                        { id: "coconut-chilli", brand: "gulpit", name: "Coconut Chilli Chutney", tag: "INDIAN-INSPIRED", category: "savoury", short_desc: "A refreshing blend of grated coconut, green chilli and curry leaf.", image_url: "/brands/gulpit/coconut_chilli_chutney.png", ingredients: "Fresh Coconut, Green Chilli, Curry Leaf, Cold-Pressed Oil", pairings: "Dosa, idli, wraps, savoury rolls and dipping platters", accent_color: "#00BFFF", display_order: 1 },
+                        { id: "smoky-tomato", brand: "gulpit", name: "Smoky Tomato Relish", tag: "WESTERN-INSPIRED", category: "savoury", short_desc: "Rich tomatoes, shallots and a hint of smoked paprika.", image_url: "/brands/gulpit/smoky_tomato_relish.png", ingredients: "Vine Tomatoes, Shallots, Smoked Paprika, Crushed Herbs", pairings: "Burgers, toasties, grilled sandwiches and barbecue skewers", accent_color: "#ef4444", display_order: 2 },
+                        { id: "miso-garlic", brand: "gulpit", name: "Miso Ginger Garlic", tag: "JAPANESE-INSPIRED", category: "savoury", short_desc: "A bold umami blend with ginger, garlic and miso.", image_url: "/brands/gulpit/miso_ginger_garlic.png", ingredients: "Ginger, Garlic, Curry Leaf, Fermented Miso, Roasted Seeds", pairings: "Noodles, rice bowls, stir-fries, dim sums and dumplings", accent_color: "#eab308", display_order: 3 },
+                        { id: "mint-thulasi", brand: "gulpit", name: "Mint & Thulasi Chutney", tag: "INDIAN HERBS", category: "savoury", short_desc: "A fresh, herby classic with mint and thulasi.", image_url: "/brands/gulpit/mint_thulasi_chutney.png", ingredients: "Fresh Mint, Coriander, Sacred Thulasi, Lemon Extract", pairings: "Savoury bites, samosas, grain bowls and sharing platters", accent_color: "#22c55e", display_order: 4 },
+                        { id: "gochujang-onion", brand: "gulpit", name: "Gochujang Onion", tag: "KOREAN-INSPIRED", category: "savoury", short_desc: "Spicy Korean-inspired roasted onion spread.", image_url: "/brands/gulpit/gochujang_onion.png", ingredients: "Roasted Onion, Bird's Eye Chilli, Fermented Gochujang", pairings: "Bibimbap, bowls, grilled sandwiches and pan-fried bites", accent_color: "#f97316", display_order: 5 },
+                        { id: "tropical-colada", brand: "gulpit", name: "Tropical Piña Colada", tag: "ISLAND INDULGENCE", category: "fruit", short_desc: "Sweet, sun-kissed pineapple infused with creamy coconut milk.", image_url: "/brands/gulpit/tropical_pina_colada.png", ingredients: "Golden Pineapple, Tender Coconut Milk, Cold-Pressed Lime, Coconut Nectar", pairings: "French toast, buttermilk waffles, açai bowls and dessert crepes", accent_color: "#38bdf8", display_order: 6 },
+                        { id: "mango-passion", brand: "gulpit", name: "Mango Passion Preserve", tag: "TROPICAL SUNSHINE", category: "fruit", short_desc: "Rich Ratnagiri Alphonso mango accented by zesty passion fruit.", image_url: "/brands/gulpit/mango_passion_jam.png", ingredients: "Alphonso Mango, Mountain Passion Fruit, Raw Agave, Lemon Zest", pairings: "Warm toast, croissant fillings, morning yogurt, and sourdough toast", accent_color: "#fbbf24", display_order: 7 },
+                        { id: "pineapple-vanilla", brand: "gulpit", name: "Pineapple Vanilla Preserve", tag: "ISLAND AROMATIC", category: "fruit", short_desc: "Pure golden pineapple chunks perfumed with whole vanilla pods.", image_url: "/brands/gulpit/pineapple_vanilla_preserve.png", ingredients: "Fresh Cut Pineapple, Madagascar Vanilla Pods, Cane Syrup", pairings: "Warm scones, English muffins, tea cake toppings and cream cheese", accent_color: "#facc15", display_order: 8 },
+                        { id: "spiced-guava", brand: "gulpit", name: "Spiced Guava Jelly", tag: "EXOTIC SPICE", category: "fruit", short_desc: "Pink mountain guavas simmered with crushed pink peppercorn.", image_url: "/brands/gulpit/spiced_guava_jelly.png", ingredients: "Pink Guava Pulp, Crushed Pink Peppercorn, Himalayan Salt, Lemon Juice", pairings: "Charcuterie boards, sharp aged cheddar, salted crackers and roasted nuts", accent_color: "#f43f5e", display_order: 9 },
+                        { id: "berry-cardamom", brand: "gulpit", name: "Berry Cardamom Spread", tag: "HERITAGE FUSION", category: "fruit", short_desc: "Vibrant wild strawberries and blackberries layered with Mysore green cardamom.", image_url: "/brands/gulpit/berry_cardamom_spread.png", ingredients: "Strawberries, Blueberries, Blackberries, Mysore Cardamom, Lemon Pulp", pairings: "Oatmeal, sourdough toast, chia puddings, and vanilla ice cream", accent_color: "#a855f7", display_order: 10 }
+                      ]),
+                    });
+                    loadAllData();
+                  }}
+                  className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-white cursor-pointer transition-all"
+                >
+                  Seed 10 Official Gulpit Flavours
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {gulpitItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="p-5 rounded-2xl bg-neutral-900/60 border border-white/10 hover:border-[#00BFFF]/40 transition-all flex flex-col justify-between group"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-[#00BFFF] px-2 py-0.5 rounded bg-[#00BFFF]/10">
+                          {item.tag || item.category}
+                        </span>
+                        <span className="text-xs text-neutral-500 font-mono">#{item.display_order}</span>
+                      </div>
+
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="relative w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden shrink-0 flex items-center justify-center p-1">
+                          <Image
+                            src={item.image_url}
+                            alt={item.name}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-base font-medium text-white">{item.name}</h3>
+                          <p className="text-xs text-neutral-400 capitalize">{item.category} collection</p>
+                        </div>
+                      </div>
+
+                      <p className="text-xs text-neutral-300 font-light line-clamp-2 mb-3">
+                        {item.short_desc}
+                      </p>
+
+                      <div className="text-[11px] text-neutral-400 space-y-1 mb-4 pt-2 border-t border-white/5">
+                        <div><strong className="text-neutral-300">Ingredients:</strong> {item.ingredients}</div>
+                        <div><strong className="text-neutral-300">Pairings:</strong> {item.pairings}</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-end gap-2 pt-3 border-t border-white/10">
+                      <button
+                        onClick={() => setEditingProduct(item)}
+                        className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs text-white flex items-center gap-1.5 transition-all cursor-pointer"
+                      >
+                        <Edit2 className="w-3.5 h-3.5" />
+                        <span>Edit</span>
+                      </button>
+                      <button
+                        onClick={() => handleDeleteProduct(item.id)}
+                        className="px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-xs text-red-300 flex items-center gap-1.5 transition-all cursor-pointer"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
@@ -505,64 +542,96 @@ export default function AdminDashboardPage() {
             </div>
 
             {/* Snackys Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {snackysItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="p-5 rounded-2xl bg-neutral-900/60 border border-white/10 hover:border-[#00BFFF]/40 transition-all flex flex-col justify-between group"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#00BFFF] px-2 py-0.5 rounded bg-[#00BFFF]/10">
-                        {item.tag}
-                      </span>
-                      <span className="text-xs text-neutral-500 font-mono">{item.net_vol || "Can"}</span>
-                    </div>
-
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="relative w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden shrink-0 flex items-center justify-center p-1">
-                        <Image
-                          src={item.image_url}
-                          alt={item.name}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                      <div>
-                        <h3 className="text-base font-medium text-white">{item.name}</h3>
-                        <p className="text-xs text-[#00BFFF] font-light">{item.seasoning}</p>
-                      </div>
-                    </div>
-
-                    <p className="text-xs text-neutral-300 font-light line-clamp-2 mb-3">
-                      {item.short_desc}
-                    </p>
-
-                    <div className="text-[11px] text-neutral-400 space-y-1 mb-4 pt-2 border-t border-white/5">
-                      <div><strong className="text-neutral-300">Ingredients:</strong> {item.ingredients}</div>
-                      <div><strong className="text-neutral-300">Pairings:</strong> {item.pairings}</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-end gap-2 pt-3 border-t border-white/10">
-                    <button
-                      onClick={() => setEditingProduct(item)}
-                      className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs text-white flex items-center gap-1.5 transition-all cursor-pointer"
-                    >
-                      <Edit2 className="w-3.5 h-3.5" />
-                      <span>Edit</span>
-                    </button>
-                    <button
-                      onClick={() => handleDeleteProduct(item.id)}
-                      className="px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-xs text-red-300 flex items-center gap-1.5 transition-all cursor-pointer"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                      <span>Delete</span>
-                    </button>
-                  </div>
+            {snackysItems.length === 0 ? (
+              <div className="p-8 rounded-2xl bg-neutral-900/40 border border-white/10 text-center space-y-4">
+                <AlertCircle className="w-8 h-8 text-amber-400 mx-auto" />
+                <div>
+                  <h3 className="text-sm font-medium text-white">No Snackys cans loaded yet</h3>
+                  <p className="text-xs text-neutral-400 mt-1 max-w-md mx-auto">
+                    Ensure your Supabase credentials are configured or click below to seed all 5 default Snackys cans into your database.
+                  </p>
                 </div>
-              ))}
-            </div>
+                <button
+                  onClick={async () => {
+                    setLoadingData(true);
+                    await fetch("/api/admin/products", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify([
+                        { id: "sweet-potato", brand: "snackys", name: "Sweet Potato Chips", seasoning: "Himalayan Pink Salt", tag: "ROOT CHIPS", short_desc: "Artisanal root chips with subtle mineral salt bringing out natural earthiness and sweetness.", image_url: "/brands/snackys/sweet_potato_chips.png", ingredients: "Farm-Fresh Orange & Purple Sweet Potatoes, Cold-Pressed Oil, Himalayan Pink Salt", pairings: "Healthy dipping platters, afternoon tea, guacamole, and guilt-free movie snacking", accent_color: "#ea580c", net_vol: "125g", display_order: 1 },
+                        { id: "taro-chips", brand: "snackys", name: "Taro Chips", seasoning: "Pudina & Lime", tag: "ORGANIC TARO", short_desc: "Delicate sliced taro root infused with cooling fresh mint leaves and zesty sun-kissed lime.", image_url: "/brands/snackys/taro_chips.png", ingredients: "Upland Organic Taro Root, Natural Mint Extract, Fresh Lime, Evaporated Sea Salt", pairings: "Hummus, Greek yoghurt dips, gourmet cheese boards, and Mediterranean mezze", accent_color: "#0284c7", net_vol: "125g", display_order: 2 },
+                        { id: "pineapple-chips", brand: "snackys", name: "Pineapple Chips", seasoning: "Tangy & Sweet", tag: "TROPICAL CRISP", short_desc: "Crisp tropical fruit chips balancing natural tartness with sun-ripened exotic sweetness.", image_url: "/brands/snackys/pineapple_chips.png", ingredients: "Queen Pineapple Pulp Slices, Natural Fruit Sugars, Mild Citrus Seasoning", pairings: "Açai breakfast bowls, artisan trail mix, fruit salads, and yogurt parfaits", accent_color: "#eab308", net_vol: "125g", display_order: 3 },
+                        { id: "banana-chips", brand: "snackys", name: "Spicy Banana Chips", seasoning: "Kashmiri Chilli & Hing", tag: "SOUTH HERITAGE", short_desc: "Traditional highland Nendran bananas crisped to perfection with vibrant red Kashmiri chilli and pinch of hing.", image_url: "/brands/snackys/banana_chips.png", ingredients: "Heritage Nendran Raw Bananas, Cold-Pressed Coconut Oil, Kashmiri Chilli, Rock Salt", pairings: "Masala chai, evening beverages, picnic snacks, and spiced yogurt raita", accent_color: "#dc2626", net_vol: "150g", display_order: 4 },
+                        { id: "garlic-sweet-potato", brand: "snackys", name: "Garlic Sweet Potato Chips", seasoning: "Roasted Garlic & Herb", tag: "SAVOURY ROOT", short_desc: "Golden crisp sweet potatoes infused with slow-roasted mountain garlic and garden-fresh rosemary.", image_url: "/brands/snackys/garlic_sweet_potato_chips.png", ingredients: "Orange Sweet Potatoes, Toasted Mountain Garlic, Dried Herbs, Himalayan Salt", pairings: "Craft beers, barbecue burgers, gourmet dip platters, and garlic aioli", accent_color: "#16a34a", net_vol: "125g", display_order: 5 }
+                      ]),
+                    });
+                    loadAllData();
+                  }}
+                  className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-white cursor-pointer transition-all"
+                >
+                  Seed 5 Official Snackys Cans
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {snackysItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="p-5 rounded-2xl bg-neutral-900/60 border border-white/10 hover:border-[#00BFFF]/40 transition-all flex flex-col justify-between group"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-[#00BFFF] px-2 py-0.5 rounded bg-[#00BFFF]/10">
+                          {item.tag}
+                        </span>
+                        <span className="text-xs text-neutral-500 font-mono">{item.net_vol || "Can"}</span>
+                      </div>
+
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="relative w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden shrink-0 flex items-center justify-center p-1">
+                          <Image
+                            src={item.image_url}
+                            alt={item.name}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-base font-medium text-white">{item.name}</h3>
+                          <p className="text-xs text-[#00BFFF] font-light">{item.seasoning}</p>
+                        </div>
+                      </div>
+
+                      <p className="text-xs text-neutral-300 font-light line-clamp-2 mb-3">
+                        {item.short_desc}
+                      </p>
+
+                      <div className="text-[11px] text-neutral-400 space-y-1 mb-4 pt-2 border-t border-white/5">
+                        <div><strong className="text-neutral-300">Ingredients:</strong> {item.ingredients}</div>
+                        <div><strong className="text-neutral-300">Pairings:</strong> {item.pairings}</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-end gap-2 pt-3 border-t border-white/10">
+                      <button
+                        onClick={() => setEditingProduct(item)}
+                        className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs text-white flex items-center gap-1.5 transition-all cursor-pointer"
+                      >
+                        <Edit2 className="w-3.5 h-3.5" />
+                        <span>Edit</span>
+                      </button>
+                      <button
+                        onClick={() => handleDeleteProduct(item.id)}
+                        className="px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-xs text-red-300 flex items-center gap-1.5 transition-all cursor-pointer"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
