@@ -11,7 +11,9 @@ export const SITE_CONFIG = {
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   ogImage: `${SITE_URL}/brand_logo_full.png`,
-  email: "contact@avinyates.com",
+  email: "Vineeth@avinyates.com",
+  phone: "+91 99619 47458",
+  whatsappUrl: "https://wa.me/919961947458?text=Hello%20Avinyates%20India%2C%20I%20would%20like%20to%20inquire%20about%20your%20services.",
   sameAs: [
     "https://www.linkedin.com/company/avinyates",
     "https://twitter.com/avinyates",

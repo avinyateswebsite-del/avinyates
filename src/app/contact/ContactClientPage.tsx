@@ -12,8 +12,7 @@ import {
   Send,
   CheckCircle2,
   AlertCircle,
-  Building2,
-  ArrowRight,
+  MessageCircle,
 } from "lucide-react";
 
 export default function ContactClientPage() {
@@ -136,10 +135,10 @@ export default function ContactClientPage() {
                     <div>
                       <span className="text-[11px] uppercase tracking-wider text-neutral-400 block font-mono">Email Us</span>
                       <a
-                        href="mailto:contact@avinyates.com"
-                        className="text-neutral-200 hover:text-[#00BFFF] transition-colors font-light"
+                        href="mailto:Vineeth@avinyates.com"
+                        className="text-neutral-200 hover:text-[#00BFFF] transition-colors font-light text-base"
                       >
-                        contact@avinyates.com
+                        Vineeth@avinyates.com
                       </a>
                     </div>
                   </div>
@@ -151,12 +150,30 @@ export default function ContactClientPage() {
                     </div>
                     <div>
                       <span className="text-[11px] uppercase tracking-wider text-neutral-400 block font-mono">Corporate Line</span>
-                      <span className="text-neutral-200 font-light">+91 (India) • Global Reach</span>
+                      <a
+                        href="tel:+919961947458"
+                        className="text-neutral-200 hover:text-[#00BFFF] transition-colors font-light text-base"
+                      >
+                        +91 99619 47458
+                      </a>
                     </div>
                   </div>
 
+                  {/* WhatsApp Direct Action Button */}
+                  <div className="pt-2">
+                    <a
+                      href="https://wa.me/919961947458?text=Hello%20Avinyates%20India%2C%20I%20would%20like%20to%20connect."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2.5 w-full px-5 py-3 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/40 text-[#25D366] hover:text-white font-medium text-sm transition-all duration-300 shadow-[0_0_20px_rgba(37,211,102,0.15)] hover:shadow-[0_0_25px_rgba(37,211,102,0.35)] cursor-pointer"
+                    >
+                      <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                      <span>Chat on WhatsApp (+91 99619 47458)</span>
+                    </a>
+                  </div>
+
                   {/* Location */}
-                  <div className="flex items-start gap-3.5">
+                  <div className="flex items-start gap-3.5 pt-2 border-t border-white/10">
                     <div className="w-9 h-9 rounded-xl bg-[#00BFFF]/10 border border-[#00BFFF]/30 flex items-center justify-center shrink-0 text-[#00BFFF]">
                       <MapPin className="w-4 h-4" />
                     </div>
