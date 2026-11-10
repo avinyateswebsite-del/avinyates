@@ -104,3 +104,4 @@ export function generateFAQSchema(faqs: { question: string; answer: string }[]) 
     })),
   };
 }
+

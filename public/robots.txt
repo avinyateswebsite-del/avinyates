@@ -40,5 +40,5 @@ User-agent: Google-Extended
 Allow: /
 
 # Sitemap
-Sitemap: https://avinyates.com/sitemap.xml
-Host: https://avinyates.com
+Sitemap: https://www.avinyates.com/sitemap.xml
+Host: https://www.avinyates.com

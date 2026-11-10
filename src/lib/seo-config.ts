@@ -1,5 +1,5 @@
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://avinyates.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.avinyates.com";
 
 export const SITE_CONFIG = {
   name: "AVINYATES INDIA",
