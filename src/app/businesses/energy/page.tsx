@@ -1,116 +1,89 @@
-"use client";
+import type { Metadata } from "next";
+import { SITE_CONFIG, SITE_URL } from "@/lib/seo-config";
+import EnergyClientPage from "./EnergyClientPage";
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "@/components/navigation/Navbar";
-import { useTranslation } from "@/i18n/LanguageContext";
+export const metadata: Metadata = {
+  title: "Energy Division | Hydrogen, Thorium SMR & Nuclear Fuel Cells",
+  description:
+    "Avinyates Energy division pioneers next-generation clean energy solutions: Green Hydrogen production, Thorium-based Small Modular Reactors (SMRs), and Nuclear Fuel Cells.",
+  alternates: {
+    canonical: `${SITE_URL}/businesses/energy`,
+  },
+  openGraph: {
+    title: "Avinyates Energy | Hydrogen & Thorium SMR • Nuclear Fuel Cells",
+    description:
+      "Future-defining clean energy architectures designed to power mankind's next era of sustainable growth.",
+    url: `${SITE_URL}/businesses/energy`,
+    siteName: SITE_CONFIG.name,
+    images: [
+      {
+        url: "/brand_logo_full.png",
+        width: 1200,
+        height: 630,
+        alt: "Avinyates Energy Division",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Avinyates Energy Division | Next-Gen Clean Energy",
+    description: "Hydrogen, Thorium SMRs, and Nuclear Fuel Cells.",
+    images: ["/brand_logo_full.png"],
+  },
+};
 
 export default function EnergyPage() {
-  const { t, languageConfig } = useTranslation();
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Businesses",
+        item: `${SITE_URL}/#businesses`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Energy",
+        item: `${SITE_URL}/businesses/energy`,
+      },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What are Avinyates Energy's core research pillars?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Avinyates Energy focuses on three breakthrough pillars: 1) Next-generation Green Hydrogen production and industrial decarbonization, 2) Thorium-based Small Modular Reactors (SMRs) for safe, continuous clean power, and 3) Nuclear Fuel Cells for ultra-reliable compact energy architectures.",
+        },
+      },
+    ],
+  };
+
   return (
-    <div
-      className="relative min-h-screen bg-black text-white selection:bg-cyan-500/30 selection:text-white select-none"
-      style={languageConfig.fontFamily ? { fontFamily: languageConfig.fontFamily } : undefined}
-    >
-      {/* Fixed Diagonal Milky Way Starfield Background */}
-      <div className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-        <Image
-          src="/starfield.png"
-          alt="Diagonal Milky Way Starfield"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-      </div>
-
-      <Navbar currentPath="/businesses/energy" />
-
-      {/* Hero Section */}
-      <section className="relative z-10 min-h-[85vh] pt-28 sm:pt-36 md:pt-44 pb-20 px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 flex flex-col justify-center overflow-hidden">
-        <div className="relative max-w-4xl mx-auto w-full z-10">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-2 mb-4 sm:mb-6">
-            <span
-              className="text-xs sm:text-sm tracking-[0.32em] text-[#38bdf8] uppercase font-semibold"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            >
-              {t.energy.badge}
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[76px] text-white font-light leading-[1.08] tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            {t.energy.titleLine1}<br />
-            {t.energy.titleLine2}
-          </h1>
-
-          {/* Subheading in Cyan */}
-          <p
-            className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-[#38bdf8] font-normal tracking-wide drop-shadow-[0_0_20px_rgba(56,189,248,0.4)]"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            {t.energy.subtitle}
-          </p>
-
-          {/* Main Description */}
-          <p
-            className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-neutral-300 font-light max-w-2xl leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            {t.energy.desc}
-          </p>
-
-          {/* Stacked Pillars with Horizontal Separator Lines */}
-          <div className="flex flex-col mt-14 sm:mt-16 space-y-10 sm:space-y-12">
-            {t.energy.pillars.map((pillar, idx) => (
-              <div key={idx} className="relative pt-2">
-                <div className="w-12 h-[2px] bg-[#38bdf8] mb-6 shadow-[0_0_8px_#38bdf8]" />
-                <h3
-                  className="text-2xl sm:text-3xl text-white font-normal tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
-                  style={{ fontFamily: "'Montserrat', sans-serif" }}
-                >
-                  {pillar.title}
-                </h3>
-                <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed max-w-xl">
-                  {pillar.desc}
-                </p>
-                {idx < t.energy.pillars.length - 1 && (
-                  <div className="w-full h-[1px] bg-white/15 mt-8 sm:mt-10" />
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Research Vision Tagline */}
-          <div className="mt-16 sm:mt-20 flex justify-center">
-            <span
-              className="text-xs sm:text-sm tracking-[0.35em] text-[#38bdf8] uppercase font-medium drop-shadow-[0_0_12px_rgba(56,189,248,0.5)]"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            >
-              {t.energy.visionTag}
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="relative z-10 w-full py-10 px-6 sm:px-10 md:px-14 lg:px-20 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
-        <div>© 2026 AVINYATES INDIA. All Rights Reserved.</div>
-        <div className="flex items-center gap-6">
-          <Link href="/" className="text-neutral-400 hover:text-white transition-colors">Home</Link>
-          <span className="text-neutral-600">•</span>
-          <Link href="/team" className="text-neutral-400 hover:text-white transition-colors">Our Team</Link>
-          <span className="text-neutral-600">•</span>
-          <Link href="/businesses/fmcg" className="text-neutral-400 hover:text-white transition-colors">FMCG</Link>
-          <span className="text-neutral-600">•</span>
-          <Link href="/businesses/aerospace-defence" className="text-neutral-400 hover:text-white transition-colors">Aerospace &amp; Defence</Link>
-        </div>
-      </footer>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <EnergyClientPage />
+    </>
   );
 }
