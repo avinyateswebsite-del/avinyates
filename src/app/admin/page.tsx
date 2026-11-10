@@ -944,3 +944,4 @@ CREATE POLICY "Admin manage inquiries" ON inquiries FOR ALL USING (true);`);
     </div>
   );
 }
+

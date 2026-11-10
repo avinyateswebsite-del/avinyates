@@ -62,3 +62,4 @@ export async function getCMSSiteContent(category?: string): Promise<Record<strin
     return {};
   }
 }
+

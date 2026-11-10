@@ -93,3 +93,4 @@ CREATE POLICY "Public read products" ON products FOR SELECT USING (true);
 CREATE POLICY "Public insert inquiries" ON inquiries FOR INSERT WITH CHECK (true);
 
 -- Service Role Key has full access to everything (used by CMS APIs)
+
