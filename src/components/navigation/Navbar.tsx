@@ -103,6 +103,14 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
           {t.nav.ourTeam}
         </Link>
 
+        {/* Contact Link */}
+        <Link
+          href="/contact"
+          className="text-neutral-200 hover:text-white transition-colors duration-200 tracking-wide whitespace-nowrap py-2"
+        >
+          {t.common.getInTouch}
+        </Link>
+
         {/* Businesses Dropdown Menu */}
         <div
           ref={dropdownRef}
@@ -275,6 +283,13 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
               className="text-neutral-200 hover:text-cyan-400 py-2 border-b border-white/10"
             >
               {t.nav.ourTeam}
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-neutral-200 hover:text-cyan-400 py-2 border-b border-white/10"
+            >
+              {t.common.getInTouch}
             </Link>
 
             <div className="py-2 border-b border-white/10 flex flex-col gap-2">
