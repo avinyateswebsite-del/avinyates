@@ -17,6 +17,8 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
     if (videoRef.current) {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
+      videoRef.current.setAttribute("playsinline", "");
+      videoRef.current.setAttribute("webkit-playsinline", "true");
       videoRef.current.play().catch(() => {
         // Fallback handled silently
       });
@@ -72,9 +74,10 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               loop
               muted
               playsInline
-              webkit-playsinline="true"
               controls={false}
+              preload="auto"
               disablePictureInPicture
+              disableRemotePlayback
               className="w-full h-full object-cover scale-[2.04] pointer-events-none mix-blend-screen contrast-[1.12] brightness-[1.08] saturate-[1.05]"
             />
           </div>

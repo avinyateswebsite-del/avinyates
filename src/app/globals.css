@@ -59,7 +59,25 @@ body {
   animation: floatSlowC 5.8s ease-in-out infinite;
 }
 
-/* Hide Google Translate Default Banner & Widget Artifacts */
+/* Hide default browser video controls / play button overlay on iOS/Safari/Chrome Mobile */
+video::-webkit-media-controls {
+  display: none !important;
+}
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+video::-webkit-media-controls-panel {
+  display: none !important;
+}
+video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
 .goog-te-banner-frame.skiptranslate,
 .goog-te-banner-frame,
 #goog-gt-tt,

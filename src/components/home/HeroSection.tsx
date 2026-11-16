@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
@@ -13,6 +13,17 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onReplayLoading }: HeroSectionProps) {
   const { t, languageConfig } = useTranslation();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.setAttribute("playsinline", "");
+      videoRef.current.setAttribute("webkit-playsinline", "true");
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   return (
     <div
@@ -22,13 +33,17 @@ export default function HeroSection({ onReplayLoading }: HeroSectionProps) {
       {/* 4K Rotating Earth Background Video - Permanently Fixated in Background */}
       <div className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
         <video
+          ref={videoRef}
           src="/rotating_earth.mp4"
           autoPlay
           loop
           muted
           playsInline
-          webkit-playsinline="true"
-          className="w-full h-full object-cover object-right md:object-center"
+          controls={false}
+          preload="auto"
+          disablePictureInPicture
+          disableRemotePlayback
+          className="w-full h-full object-cover object-right md:object-center pointer-events-none"
         />
         {/* Subtle dark overlay to keep video clear while elevating text contrast */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-black/10" />
