@@ -27,17 +27,38 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<SupportedLanguageCode>(DEFAULT_LANGUAGE);
   const [, startTransition] = useTransition();
 
-  // Load initial preference from localStorage on mount
+  // Load initial preference from localStorage on mount and listen to cross-component changes
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY) as SupportedLanguageCode | null;
-      if (saved && translations[saved]) {
-        setLanguageState(saved);
-        applyDocumentAttributes(saved);
+    const syncLang = () => {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY) as SupportedLanguageCode | null;
+        if (saved && translations[saved]) {
+          setLanguageState(saved);
+          applyDocumentAttributes(saved);
+        }
+      } catch {
+        // Fallback silently if storage unavailable
       }
-    } catch {
-      // Fallback silently if storage unavailable
-    }
+    };
+
+    syncLang();
+
+    const handleCustomChange = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      const detailLang = customEvent.detail as SupportedLanguageCode;
+      if (detailLang && translations[detailLang]) {
+        setLanguageState(detailLang);
+        applyDocumentAttributes(detailLang);
+      }
+    };
+
+    window.addEventListener("languageChange", handleCustomChange);
+    window.addEventListener("storage", syncLang);
+
+    return () => {
+      window.removeEventListener("languageChange", handleCustomChange);
+      window.removeEventListener("storage", syncLang);
+    };
   }, []);
 
   const applyDocumentAttributes = (langCode: SupportedLanguageCode) => {

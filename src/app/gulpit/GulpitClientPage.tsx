@@ -455,7 +455,7 @@ export default function GulpitPage() {
                   }}
                   className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-white/20 hover:border-[#00BFFF] bg-black/40 hover:bg-[#00BFFF]/10 text-[11px] sm:text-xs text-neutral-300 hover:text-white font-light tracking-wide transition-all duration-300 mt-auto"
                 >
-                  <span>View Details</span>
+                  <span>{t.gulpit.viewDetails}</span>
                   <ArrowRight className="w-3 h-3 text-[#00BFFF]" />
                 </button>
               </div>
@@ -476,7 +476,7 @@ export default function GulpitPage() {
                 className="text-xs font-semibold tracking-[0.28em] text-neutral-300 uppercase"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                REAL INGREDIENTS
+                {t.gulpit.realIngredientsEyebrow}
               </span>
             </div>
 
@@ -485,13 +485,13 @@ export default function GulpitPage() {
               className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-white tracking-tight leading-[1.08] mb-6 drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              Goodness<br />
-              You Can <span className="text-[#00BFFF]">See.</span>
+              {t.gulpit.realTitle1}<br />
+              {t.gulpit.realTitle2} <span className="text-[#00BFFF]">{t.gulpit.realTitleHighlight}</span>
             </h2>
 
             {/* Subtitle */}
             <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed mb-8 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-              We use real fruits, herbs, spices and superfoods to create spreads that are rich in flavour and natural nutrition. No artificial additives. No unnecessary fillers. Just clean, honest ingredients &mdash; the way it should be.
+              {t.gulpit.realDesc}
             </p>
 
             {/* CTA Button */}
@@ -501,7 +501,7 @@ export default function GulpitPage() {
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-[#00BFFF]/70 hover:border-[#00BFFF] bg-black/40 hover:bg-[#00BFFF]/10 text-xs sm:text-sm text-white font-medium tracking-wide transition-all duration-300 group shadow-xl shadow-black/80 cursor-pointer"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                <span>Our Ingredients</span>
+                <span>{t.gulpit.ourIngredientsBtn}</span>
                 <ArrowRight className="w-4 h-4 text-[#00BFFF] transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
@@ -558,7 +558,7 @@ export default function GulpitPage() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
         >
           <Link href="/team" className="text-neutral-300 hover:text-white transition-colors">
-            Our Team
+            {t.nav.ourTeam}
           </Link>
           <span className="text-[#00BFFF] relative font-medium">
             Gulpit
@@ -568,10 +568,10 @@ export default function GulpitPage() {
             SNACKYS
           </Link>
           <Link href="/businesses/aerospace-defence" className="text-neutral-300 hover:text-white transition-colors">
-            Innovation
+            {t.nav.aerospace}
           </Link>
           <Link href="/businesses/energy" className="text-neutral-300 hover:text-white transition-colors">
-            Contact
+            {t.nav.energy}
           </Link>
         </div>
 

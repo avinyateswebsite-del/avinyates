@@ -38,7 +38,7 @@ export default function TeamPage() {
               className="text-xs sm:text-sm tracking-[0.32em] text-[#38bdf8] uppercase font-semibold"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              PEOPLE &amp; PURPOSE
+              {t.team.eyebrow}
             </span>
           </div>
 
@@ -46,17 +46,14 @@ export default function TeamPage() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] text-white font-light leading-[1.08] tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Our{" "}
-            <span className="text-[#38bdf8] font-normal drop-shadow-[0_0_35px_rgba(56,189,248,0.5)]">
-              Team
-            </span>
+            {t.nav.ourTeam}
           </h1>
 
           <p
             className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-neutral-300 font-light max-w-2xl leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            The visionaries, engineers, and scientists united by a single purpose: inspiring radical innovation and elevating human potential across India and the globe.
+            {t.team.subtitle}
           </p>
         </div>
       </section>

@@ -62,9 +62,9 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           isExiting ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"
         }`}
       >
-        <div className="flex flex-col items-center justify-center w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
-          {/* 250% Enlarged 3D Chrome Infinity Video */}
-          <div className="relative w-full h-[180px] xs:h-[220px] sm:h-[280px] md:h-[320px] lg:h-[360px] overflow-hidden flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center w-full max-w-sm sm:max-w-md md:max-w-lg">
+          {/* Crisp 3D Chrome Infinity Emblem Video */}
+          <div className="relative w-full h-[155px] xs:h-[180px] sm:h-[216px] md:h-[252px] overflow-hidden flex items-center justify-center">
             <video
               ref={videoRef}
               src="/loading_animation.mp4"
@@ -75,11 +75,11 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               webkit-playsinline="true"
               controls={false}
               disablePictureInPicture
-              className="w-full h-full object-cover scale-[2.5] pointer-events-none mix-blend-screen"
+              className="w-full h-full object-cover scale-[2.04] pointer-events-none mix-blend-screen contrast-[1.12] brightness-[1.08] saturate-[1.05]"
             />
           </div>
 
-          {/* Multilingual Words - Positioned clearly beneath the enlarged logo */}
+          {/* Multilingual Words - Positioned clearly beneath the logo */}
           <AppleLanguageChanger onAllLanguagesComplete={handleOpenShutter} />
         </div>
       </div>

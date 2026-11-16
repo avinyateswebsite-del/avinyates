@@ -52,24 +52,24 @@ export default function AppleLanguageChanger({ onAllLanguagesComplete }: AppleLa
       <div className="flex flex-col items-center justify-center">
         {/* Main Brand Name in Local Script */}
         <h1
-          className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[46px] text-white whitespace-nowrap leading-none drop-shadow-[0_4px_24px_rgba(255,255,255,0.35)]"
+          className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-[32px] text-white whitespace-nowrap leading-none drop-shadow-[0_4px_20px_rgba(255,255,255,0.3)] tracking-wider"
           style={{
             fontFamily: isLatin ? "'Montserrat', sans-serif" : item.fontFamily,
-            fontWeight: isLatin ? 650 : item.fontWeight || 550,
-            letterSpacing: isLatin ? "0.18em" : item.letterSpacing || "normal",
+            fontWeight: isLatin ? 600 : item.fontWeight || 550,
+            letterSpacing: isLatin ? "0.2em" : item.letterSpacing || "normal",
           }}
         >
           {item.text}
         </h1>
 
         {/* Tagline translated in harmony */}
-        <div className="mt-2 sm:mt-2.5">
+        <div className="mt-1.5 sm:mt-2">
           <span
-            className="text-xs xs:text-sm sm:text-base md:text-lg text-neutral-300 font-normal whitespace-nowrap block drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+            className="text-[10px] xs:text-xs sm:text-sm text-neutral-400 font-normal whitespace-nowrap block drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
             style={{
               fontFamily: isLatin ? "'Montserrat', sans-serif" : item.fontFamily,
               fontWeight: 400,
-              letterSpacing: "0.22em",
+              letterSpacing: "0.24em",
             }}
           >
             {item.tagline}
@@ -80,9 +80,9 @@ export default function AppleLanguageChanger({ onAllLanguagesComplete }: AppleLa
   };
 
   return (
-    <div className="flex flex-col items-center justify-center text-center select-none w-full max-w-sm sm:max-w-md md:max-w-2xl px-4 -mt-12 xs:-mt-14 sm:-mt-18 md:-mt-22 lg:-mt-26 xl:-mt-28 z-20">
+    <div className="flex flex-col items-center justify-center text-center select-none w-full max-w-sm sm:max-w-md md:max-w-xl px-4 -mt-6 sm:-mt-8 md:-mt-10 z-20">
       {/* Dynamic Word Stage with Overlapping Crossfade */}
-      <div className="relative w-full h-16 xs:h-18 sm:h-20 md:h-24 flex items-center justify-center overflow-visible">
+      <div className="relative w-full h-14 xs:h-16 sm:h-16 md:h-18 flex items-center justify-center overflow-visible">
         {/* Previous Word (fading out smoothly) */}
         {previous && (
           <div

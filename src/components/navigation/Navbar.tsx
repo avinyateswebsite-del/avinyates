@@ -125,46 +125,48 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
 
           {/* Businesses Dropdown Menu */}
           {dropdownOpen && (
-            <div className="absolute right-0 top-full mt-2 min-w-[240px] z-50 animate-in fade-in slide-in-from-top-1 duration-200 rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] bg-black/85 backdrop-blur-2xl">
-              {/* Cyan top accent line */}
-              <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#00BFFF]/60 to-transparent" />
+            <div className="absolute right-0 top-full pt-1 min-w-[240px] z-50">
+              <div className="animate-in fade-in slide-in-from-top-1 duration-200 rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] bg-black/95 backdrop-blur-2xl">
+                {/* Cyan top accent line */}
+                <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#00BFFF]/60 to-transparent" />
 
-              <div className="flex flex-col px-2 py-3 gap-1">
-                {/* FMCG */}
-                <Link
-                  href="/businesses/fmcg"
-                  onClick={() => setDropdownOpen(false)}
-                  className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-white/5 transition-all duration-200"
-                >
-                  <span className="text-neutral-300 group-hover:text-white text-sm font-light tracking-widest uppercase transition-all">
-                    {t.nav.fmcg}
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00BFFF] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-                </Link>
+                <div className="flex flex-col px-2 py-3 gap-1">
+                  {/* FMCG */}
+                  <Link
+                    href="/businesses/fmcg"
+                    onClick={() => setDropdownOpen(false)}
+                    className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-white/10 transition-all duration-200"
+                  >
+                    <span className="text-neutral-300 group-hover:text-white text-sm font-light tracking-widest uppercase transition-all">
+                      {t.nav.fmcg}
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00BFFF] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                  </Link>
 
-                {/* Aerospace and Defence */}
-                <Link
-                  href="/businesses/aerospace-defence"
-                  onClick={() => setDropdownOpen(false)}
-                  className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-white/5 transition-all duration-200"
-                >
-                  <span className="text-neutral-300 group-hover:text-white text-sm font-light tracking-widest uppercase transition-all">
-                    {t.nav.aerospace}
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00BFFF] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-                </Link>
+                  {/* Aerospace and Defence */}
+                  <Link
+                    href="/businesses/aerospace-defence"
+                    onClick={() => setDropdownOpen(false)}
+                    className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-white/10 transition-all duration-200"
+                  >
+                    <span className="text-neutral-300 group-hover:text-white text-sm font-light tracking-widest uppercase transition-all">
+                      {t.nav.aerospace}
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00BFFF] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                  </Link>
 
-                {/* Energy */}
-                <Link
-                  href="/businesses/energy"
-                  onClick={() => setDropdownOpen(false)}
-                  className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-white/5 transition-all duration-200"
-                >
-                  <span className="text-neutral-300 group-hover:text-white text-sm font-light tracking-widest uppercase transition-all">
-                    {t.nav.energy}
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00BFFF] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-                </Link>
+                  {/* Energy */}
+                  <Link
+                    href="/businesses/energy"
+                    onClick={() => setDropdownOpen(false)}
+                    className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-white/10 transition-all duration-200"
+                  >
+                    <span className="text-neutral-300 group-hover:text-white text-sm font-light tracking-widest uppercase transition-all">
+                      {t.nav.energy}
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00BFFF] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                  </Link>
+                </div>
               </div>
             </div>
           )}
@@ -197,32 +199,34 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
 
           {/* Language Menu */}
           {langDropdownOpen && (
-            <div className="absolute right-0 top-full mt-2 w-64 max-h-[360px] overflow-y-auto z-50 animate-in fade-in slide-in-from-top-1 duration-200 rounded-2xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.9)] bg-black/90 backdrop-blur-2xl scrollbar-thin scrollbar-thumb-white/20">
-              <div className="sticky top-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#00BFFF]/60 to-transparent z-10" />
-              <div className="p-2 space-y-0.5">
-                <div className="px-3 py-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#00BFFF]/80">
-                  {t.nav.selectLanguage}
+            <div className="absolute right-0 top-full pt-1 w-64 z-50">
+              <div className="max-h-[360px] overflow-y-auto animate-in fade-in slide-in-from-top-1 duration-200 rounded-2xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.9)] bg-black/95 backdrop-blur-2xl scrollbar-thin scrollbar-thumb-white/20">
+                <div className="sticky top-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#00BFFF]/60 to-transparent z-10" />
+                <div className="p-2 space-y-0.5">
+                  <div className="px-3 py-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#00BFFF]/80">
+                    {t.nav.selectLanguage}
+                  </div>
+                  {languages.map((lang) => {
+                    const isSelected = lang.code === language;
+                    return (
+                      <button
+                        key={lang.code}
+                        onClick={() => handleSelectLanguage(lang.code)}
+                        className={`w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-left text-xs transition-all duration-150 cursor-pointer ${
+                          isSelected
+                            ? "bg-[#00BFFF]/15 text-[#00BFFF] font-medium"
+                            : "text-neutral-300 hover:bg-white/10 hover:text-white"
+                        }`}
+                      >
+                        <div className="flex flex-col">
+                          <span className="text-white text-xs">{lang.nativeName}</span>
+                          <span className="text-[10px] text-neutral-400 font-light">{lang.name}</span>
+                        </div>
+                        {isSelected && <Check className="w-3.5 h-3.5 text-[#00BFFF]" />}
+                      </button>
+                    );
+                  })}
                 </div>
-                {languages.map((lang) => {
-                  const isSelected = lang.code === language;
-                  return (
-                    <button
-                      key={lang.code}
-                      onClick={() => handleSelectLanguage(lang.code)}
-                      className={`w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-left text-xs transition-all duration-150 cursor-pointer ${
-                        isSelected
-                          ? "bg-[#00BFFF]/15 text-[#00BFFF] font-medium"
-                          : "text-neutral-300 hover:bg-white/10 hover:text-white"
-                      }`}
-                    >
-                      <div className="flex flex-col">
-                        <span className="text-white text-xs">{lang.nativeName}</span>
-                        <span className="text-[10px] text-neutral-400 font-light">{lang.name}</span>
-                      </div>
-                      {isSelected && <Check className="w-3.5 h-3.5 text-[#00BFFF]" />}
-                    </button>
-                  );
-                })}
               </div>
             </div>
           )}
