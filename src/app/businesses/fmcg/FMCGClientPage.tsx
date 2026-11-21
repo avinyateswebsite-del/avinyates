@@ -5,10 +5,36 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
 import { useTranslation } from "@/i18n/LanguageContext";
-import { Leaf, FlaskConical, ArrowRight, ShieldCheck, Heart, Sparkles, Droplets, Flame, CheckCircle2 } from "lucide-react";
+import { Leaf, FlaskConical, ArrowRight, ShieldCheck, Heart, Sparkles, Droplets, Flame, CheckCircle2, Thermometer, ShieldAlert, Zap, Scale, Award } from "lucide-react";
 
 export default function FMCGPage() {
   const { t, languageConfig, dir } = useTranslation();
+
+  // Custom stroke icons matching infographic and site styling
+  const vacuumIcons = [
+    // 1. Ultra Low Oil Absorption
+    <svg key="oil" className="w-6 h-6 text-[#00BFFF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+      <path d="M12 9v6m-2.5-2.5l2.5 2.5 2.5-2.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>,
+    // 2. Low Temperature Processing
+    <Thermometer key="temp" className="w-6 h-6 stroke-[1.6] text-[#00BFFF]" />,
+    // 3. Superior Nutrient Retention
+    <Leaf key="nutri" className="w-6 h-6 stroke-[1.6] text-[#00BFFF]" />,
+    // 4. Less Oil & Lower Calories
+    <Droplets key="cal" className="w-6 h-6 stroke-[1.6] text-[#00BFFF]" />,
+  ];
+
+  const riceBranIcons = [
+    // 1. Heart Friendly (Gamma Oryzanol)
+    <Heart key="heart" className="w-6 h-6 stroke-[1.6] text-amber-400" />,
+    // 2. Powerful Natural Antioxidants
+    <Sparkles key="antiox" className="w-6 h-6 stroke-[1.6] text-amber-400" />,
+    // 3. Rich in Vitamin E & Tocopherols
+    <Award key="vite" className="w-6 h-6 stroke-[1.6] text-amber-400" />,
+    // 4. Balanced Lipid Profile (MUFA & PUFA)
+    <Scale key="scale" className="w-6 h-6 stroke-[1.6] text-amber-400" />,
+  ];
 
   return (
     <div
@@ -334,13 +360,12 @@ export default function FMCGPage() {
             {/* Dual Column Infographic Grid: Vacuum Tech (Left) vs Rice Bran Oil (Right) */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-12 sm:mb-16">
               {/* Card 1: Benefits of Vacuum Technology */}
-              <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl bg-neutral-900/60 border border-[#00BFFF]/30 backdrop-blur-xl shadow-2xl overflow-hidden group hover:border-[#00BFFF]/60 transition-all duration-300">
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00BFFF] to-transparent" />
-                <div className="absolute -top-24 -left-24 w-48 h-48 bg-[#00BFFF]/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl bg-transparent border border-[#00BFFF]/20 overflow-hidden group hover:border-[#00BFFF]/40 transition-all duration-300">
+                <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#00BFFF]/70 to-transparent" />
 
-                <div className="flex items-center gap-3.5 mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-[#00BFFF]/15 border border-[#00BFFF]/40 flex items-center justify-center text-[#00BFFF] shrink-0 shadow-[0_0_15px_rgba(0,191,255,0.3)]">
-                    <Droplets className="w-6 h-6 text-[#00BFFF]" />
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-full border border-[#00BFFF]/50 flex items-center justify-center text-[#00BFFF] shrink-0">
+                    <Droplets className="w-6 h-6 text-[#00BFFF] stroke-[1.6]" />
                   </div>
                   <div>
                     <span className="text-[10px] tracking-[0.24em] uppercase text-[#00BFFF] font-mono block">
@@ -355,14 +380,14 @@ export default function FMCGPage() {
                   </div>
                 </div>
 
-                <div className="space-y-5">
+                <div className="space-y-6">
                   {t.fmcg.vacuumRiceBran.vacuumItems.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-[#00BFFF]/20 transition-all">
-                      <div className="w-6 h-6 rounded-full bg-[#00BFFF]/20 flex items-center justify-center shrink-0 mt-0.5 text-[#00BFFF]">
-                        <CheckCircle2 className="w-3.5 h-3.5" />
+                    <div key={idx} className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full border border-[#00BFFF]/40 flex items-center justify-center shrink-0 text-[#00BFFF]">
+                        {vacuumIcons[idx % vacuumIcons.length]}
                       </div>
                       <div>
-                        <h4 className="text-sm sm:text-base font-semibold text-white tracking-wide mb-1">
+                        <h4 className="text-base font-semibold text-white tracking-wide mb-1">
                           {item.title}
                         </h4>
                         <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
@@ -375,13 +400,12 @@ export default function FMCGPage() {
               </div>
 
               {/* Card 2: Benefits of Rice Bran Oil */}
-              <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl bg-neutral-900/60 border border-amber-400/30 backdrop-blur-xl shadow-2xl overflow-hidden group hover:border-amber-400/60 transition-all duration-300">
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-                <div className="absolute -top-24 -right-24 w-48 h-48 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl bg-transparent border border-amber-400/20 overflow-hidden group hover:border-amber-400/40 transition-all duration-300">
+                <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-amber-400/70 to-transparent" />
 
-                <div className="flex items-center gap-3.5 mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-amber-400/15 border border-amber-400/40 flex items-center justify-center text-amber-400 shrink-0 shadow-[0_0_15px_rgba(251,191,36,0.3)]">
-                    <Heart className="w-6 h-6 text-amber-400" />
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-full border border-amber-400/50 flex items-center justify-center text-amber-400 shrink-0">
+                    <Heart className="w-6 h-6 text-amber-400 stroke-[1.6]" />
                   </div>
                   <div>
                     <span className="text-[10px] tracking-[0.24em] uppercase text-amber-400 font-mono block">
@@ -396,14 +420,14 @@ export default function FMCGPage() {
                   </div>
                 </div>
 
-                <div className="space-y-5">
+                <div className="space-y-6">
                   {t.fmcg.vacuumRiceBran.riceBranItems.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-amber-400/20 transition-all">
-                      <div className="w-6 h-6 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5 text-amber-400">
-                        <CheckCircle2 className="w-3.5 h-3.5" />
+                    <div key={idx} className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full border border-amber-400/40 flex items-center justify-center shrink-0 text-amber-400">
+                        {riceBranIcons[idx % riceBranIcons.length]}
                       </div>
                       <div>
-                        <h4 className="text-sm sm:text-base font-semibold text-white tracking-wide mb-1">
+                        <h4 className="text-base font-semibold text-white tracking-wide mb-1">
                           {item.title}
                         </h4>
                         <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
@@ -416,10 +440,10 @@ export default function FMCGPage() {
               </div>
             </div>
 
-            {/* The Avinyates Advantage Ribbon with Infographic Backdrop */}
-            <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-950/40 via-neutral-900/80 to-cyan-950/40 border border-emerald-500/30 backdrop-blur-2xl shadow-2xl flex flex-col items-center text-center">
+            {/* The Avinyates Advantage Ribbon */}
+            <div className="relative p-6 sm:p-8 rounded-3xl bg-transparent border border-white/10 flex flex-col items-center text-center">
               <span
-                className="text-xs font-mono tracking-[0.28em] text-emerald-400 uppercase mb-2"
+                className="text-xs font-mono tracking-[0.28em] text-[#00BFFF] uppercase mb-2"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 {t.fmcg.vacuumRiceBran.advantageHeading}
@@ -428,9 +452,9 @@ export default function FMCGPage() {
                 {t.fmcg.vacuumRiceBran.advantageTags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-emerald-400/50 text-xs sm:text-sm text-neutral-200 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-transparent border border-white/15 hover:border-[#00BFFF]/50 text-xs sm:text-sm text-neutral-200 transition-colors"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#00BFFF]" />
                     <span>{tag}</span>
                   </span>
                 ))}
