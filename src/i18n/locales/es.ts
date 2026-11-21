@@ -271,7 +271,7 @@ const es: TranslationKeys = {
         tag: "01 / COCCIÓN INTELIGENTE",
         titleLine1: "Más Crujiente.",
         titleLine2: "Menos Grasa.*",
-        desc: "La tecnología al vacío transforma piña, yaca y camote con una absorción mínima de aceite.*",
+        desc: "La avanzada fritura al vacío en aceite puro de salvado de arroz cardiosaludable y un desaceitado eficaz transforman la piña, la jaca y la batata en bocados crujientes con mucha menor grasa.*",
       },
       {
         tag: "02 / NUTRICIÓN NATURAL",

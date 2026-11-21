@@ -271,7 +271,7 @@ const en = {
         tag: "01 / SMART FRYING",
         titleLine1: "Big Crunch.",
         titleLine2: "Less Oil.*",
-        desc: "Advanced vacuum frying and effective de-oiling transform pineapple, jackfruit and sweet potato into irresistibly crisp bites with less oil than conventional frying.*",
+        desc: "Advanced vacuum frying in heart-healthy pure rice bran oil and effective de-oiling transform pineapple, jackfruit and sweet potato into irresistibly crisp bites with significantly less oil.*",
       },
       {
         tag: "02 / NATURAL CHARACTER",

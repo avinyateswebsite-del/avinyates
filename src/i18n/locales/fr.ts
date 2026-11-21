@@ -271,7 +271,7 @@ const fr: TranslationKeys = {
         tag: "01 / CUISSON INTELLIGENTE",
         titleLine1: "Plus de Croquant.",
         titleLine2: "Moins d'Huile.*",
-        desc: "La technologie sous vide sublime ananas, jacquier et patate douce avec une absorption minimale d'huile.*",
+        desc: "La friture sous vide avancée dans une huile de son de riz pure et saine pour le cœur transforme l'ananas, le jacquier et la patate douce en bouchées croustillantes avec nettement moins d'huile.*",
       },
       {
         tag: "02 / NUTRITION PRÉSERVÉE",
