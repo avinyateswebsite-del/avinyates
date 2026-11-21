@@ -124,6 +124,57 @@ const fr: TranslationKeys = {
     ],
   },
   fmcg: {
+    vacuumRiceBran: {
+        "questionTitle": "Pourquoi la Friture sous Vide & l'Huile de Son de Riz ?",
+        "questionSubtitle": "La combinaison parfaite pour des aliments plus sains, plus savoureux et plus croustillants.",
+        "formulaBadge": "Technologie sous Vide + Huile de Son de Riz = Le Meilleur des Deux Mondes",
+        "vacuumHeading": "Avantages de la Technologie sous Vide",
+        "vacuumItems": [
+            {
+                "title": "Absorption d'Huile Ultra Faible",
+                "desc": "La friture sous pression réduite garantit un croustillant exceptionnel avec beaucoup moins d'huile."
+            },
+            {
+                "title": "Processus à Basse Température",
+                "desc": "Préserve les couleurs éclatantes, les saveurs et les nutriments essentiels sans brûlure."
+            },
+            {
+                "title": "Rétention Supérieure des Nutriments",
+                "desc": "Les vitamines et antioxydants restent intacts dans les fruits et tubercules."
+            },
+            {
+                "title": "Moins d'Huile & Faible en Calories",
+                "desc": "Une collation saine, légère et facilement digestible."
+            }
+        ],
+        "riceBranHeading": "Bienfaits de l'Huile de Son de Riz",
+        "riceBranItems": [
+            {
+                "title": "Bénéfique pour le Cœur (Gamma Oryzanol)",
+                "desc": "Riche en oryzanol naturel et en bons lipides favorables au système cardiovasculaire."
+            },
+            {
+                "title": "Puissants Antioxydants",
+                "desc": "Neutralise les radicaux libres et favorise la vitalité quotidienne."
+            },
+            {
+                "title": "Riche en Vitamine E",
+                "desc": "Soutient les défenses immunitaires et la vitalité générale."
+            },
+            {
+                "title": "Profil Lipidique Équilibré (AGMI & AGPI)",
+                "desc": "Point de fumée élevé et excellent équilibre d'acides gras essentiels."
+            }
+        ],
+        "advantageHeading": "L'Avantage Avinyates",
+        "advantageTags": [
+            "Zéro Conservateur",
+            "Sans Sucre Ajouté",
+            "Naturellement Sain",
+            "Incroyablement Savoureux",
+            "Technologie Intelligente. Pureté Naturelle."
+        ]
+    },
     eyebrow: "AVINYATES FMCG",
     tagline: "INSPIRER UN MODE DE VIE SAIN",
     title: "RÉVOLUTION DE L'ALIMENTATION PROPRE",

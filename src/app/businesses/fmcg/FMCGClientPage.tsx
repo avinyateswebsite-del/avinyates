@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
 import { useTranslation } from "@/i18n/LanguageContext";
-import { Leaf, FlaskConical, ArrowRight } from "lucide-react";
+import { Leaf, FlaskConical, ArrowRight, ShieldCheck, Heart, Sparkles, Droplets, Flame, CheckCircle2 } from "lucide-react";
 
 export default function FMCGPage() {
   const { t, languageConfig, dir } = useTranslation();
@@ -299,6 +299,145 @@ export default function FMCGPage() {
             </p>
           </div>
         </section>
+
+        {/* WHY VACUUM FRYING & RICE BRAN OIL SECTION */}
+        {t.fmcg.vacuumRiceBran && (
+          <section className="border-t border-white/10 pt-16 sm:pt-20 pb-12 mb-16 sm:mb-20">
+            {/* Section Eyebrow & Headline */}
+            <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#00BFFF]/40 bg-[#00BFFF]/10 mb-4 shadow-[0_0_15px_rgba(0,191,255,0.2)]">
+                <span className="w-2 h-2 rounded-full bg-[#00BFFF] shadow-[0_0_8px_#00BFFF]" />
+                <span
+                  className="text-[11px] sm:text-xs tracking-[0.24em] text-[#00BFFF] uppercase font-mono"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  THE SCIENCE OF PURITY
+                </span>
+              </div>
+
+              <h2
+                className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.12] drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                {t.fmcg.vacuumRiceBran.questionTitle}
+              </h2>
+
+              <p className="mt-3.5 sm:mt-4 text-base sm:text-lg md:text-xl text-[#00BFFF] font-light max-w-2xl mx-auto leading-relaxed drop-shadow-[0_0_16px_rgba(0,191,255,0.3)]">
+                {t.fmcg.vacuumRiceBran.questionSubtitle}
+              </p>
+
+              <div className="mt-4 inline-block px-5 py-2 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm text-neutral-300 font-mono tracking-wide">
+                {t.fmcg.vacuumRiceBran.formulaBadge}
+              </div>
+            </div>
+
+            {/* Dual Column Infographic Grid: Vacuum Tech (Left) vs Rice Bran Oil (Right) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-12 sm:mb-16">
+              {/* Card 1: Benefits of Vacuum Technology */}
+              <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl bg-neutral-900/60 border border-[#00BFFF]/30 backdrop-blur-xl shadow-2xl overflow-hidden group hover:border-[#00BFFF]/60 transition-all duration-300">
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00BFFF] to-transparent" />
+                <div className="absolute -top-24 -left-24 w-48 h-48 bg-[#00BFFF]/10 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="flex items-center gap-3.5 mb-6">
+                  <div className="w-12 h-12 rounded-2xl bg-[#00BFFF]/15 border border-[#00BFFF]/40 flex items-center justify-center text-[#00BFFF] shrink-0 shadow-[0_0_15px_rgba(0,191,255,0.3)]">
+                    <Droplets className="w-6 h-6 text-[#00BFFF]" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] tracking-[0.24em] uppercase text-[#00BFFF] font-mono block">
+                      ADVANCED PROCESS
+                    </span>
+                    <h3
+                      className="text-xl sm:text-2xl font-bold text-white tracking-wide"
+                      style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    >
+                      {t.fmcg.vacuumRiceBran.vacuumHeading}
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="space-y-5">
+                  {t.fmcg.vacuumRiceBran.vacuumItems.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-[#00BFFF]/20 transition-all">
+                      <div className="w-6 h-6 rounded-full bg-[#00BFFF]/20 flex items-center justify-center shrink-0 mt-0.5 text-[#00BFFF]">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm sm:text-base font-semibold text-white tracking-wide mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Card 2: Benefits of Rice Bran Oil */}
+              <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl bg-neutral-900/60 border border-amber-400/30 backdrop-blur-xl shadow-2xl overflow-hidden group hover:border-amber-400/60 transition-all duration-300">
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="flex items-center gap-3.5 mb-6">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-400/15 border border-amber-400/40 flex items-center justify-center text-amber-400 shrink-0 shadow-[0_0_15px_rgba(251,191,36,0.3)]">
+                    <Heart className="w-6 h-6 text-amber-400" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] tracking-[0.24em] uppercase text-amber-400 font-mono block">
+                      GOLDEN HEART OIL
+                    </span>
+                    <h3
+                      className="text-xl sm:text-2xl font-bold text-white tracking-wide"
+                      style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    >
+                      {t.fmcg.vacuumRiceBran.riceBranHeading}
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="space-y-5">
+                  {t.fmcg.vacuumRiceBran.riceBranItems.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-amber-400/20 transition-all">
+                      <div className="w-6 h-6 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5 text-amber-400">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm sm:text-base font-semibold text-white tracking-wide mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* The Avinyates Advantage Ribbon with Infographic Backdrop */}
+            <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-950/40 via-neutral-900/80 to-cyan-950/40 border border-emerald-500/30 backdrop-blur-2xl shadow-2xl flex flex-col items-center text-center">
+              <span
+                className="text-xs font-mono tracking-[0.28em] text-emerald-400 uppercase mb-2"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                {t.fmcg.vacuumRiceBran.advantageHeading}
+              </span>
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-2">
+                {t.fmcg.vacuumRiceBran.advantageTags.map((tag, idx) => (
+                  <span
+                    key={idx}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-emerald-400/50 text-xs sm:text-sm text-neutral-200 transition-colors"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>{tag}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
       </main>
 
       {/* FOOTER */}

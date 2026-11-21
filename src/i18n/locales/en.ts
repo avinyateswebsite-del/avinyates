@@ -122,16 +122,67 @@ const en = {
     ],
   },
   fmcg: {
+    vacuumRiceBran: {
+        "questionTitle": "Why Vacuum Frying & Rice Bran Oil?",
+        "questionSubtitle": "The Perfect Combination for Healthier, Tastier & Crunchier Food.",
+        "formulaBadge": "Vacuum Technology + Rice Bran Oil = The Best of Both Worlds",
+        "vacuumHeading": "Benefits of Vacuum Technology",
+        "vacuumItems": [
+            {
+                "title": "Ultra Low Oil Absorption",
+                "desc": "High-efficiency reduced pressure frying ensures exceptionally crispy snacks with significantly lower oil uptake."
+            },
+            {
+                "title": "Low Temperature Processing",
+                "desc": "Gentle low-temperature vacuum concentration and frying preserves natural vibrant colors, textures, and essential nutrients."
+            },
+            {
+                "title": "Superior Nutrient Retention",
+                "desc": "Vitamins, heat-sensitive minerals, and wholesome antioxidants stay locked into fruits and roots without oxidation."
+            },
+            {
+                "title": "Less Oil & Lower Calories",
+                "desc": "Cleaner, guilt-free indulgence with a lighter digestive profile compared to traditional deep frying."
+            }
+        ],
+        "riceBranHeading": "Benefits of Rice Bran Oil",
+        "riceBranItems": [
+            {
+                "title": "Heart Friendly (Gamma Oryzanol)",
+                "desc": "Naturally loaded with Oryzanol and heart-healthy good fats that support cardiovascular wellness."
+            },
+            {
+                "title": "Powerful Natural Antioxidants",
+                "desc": "Actively neutralizes free radicals, promoting cellular longevity and clean-label vitality."
+            },
+            {
+                "title": "Rich in Vitamin E & Tocopherols",
+                "desc": "Bolsters daily immunity, cellular resilience, and overall holistic vitality."
+            },
+            {
+                "title": "Balanced Lipid Profile (MUFA & PUFA)",
+                "desc": "High smoke point and optimal golden ratio of monounsaturated and polyunsaturated fatty acids."
+            }
+        ],
+        "advantageHeading": "The Avinyates Advantage",
+        "advantageTags": [
+            "Zero Preservatives",
+            "Zero Added Sugar",
+            "Naturally Healthy",
+            "Incredibly Tasty",
+            "Smart Technology. Nature's Goodness."
+        ]
+    },
     eyebrow: "AVINYATES FMCG",
     tagline: "Inspiring Healthy Living",
     title: "Clean Food Revolution",
     subtitle: "100% preservative-free, zero chemicals, zero added sugar.",
     gulpitTitle: "Gulpit",
     gulpitSubtitle: "Bold Flavours, Clean Promise.",
-    gulpitDesc: "Exotic savoury spreads, chutneys, and tropical fruit fusions crafted with cold-pressed natural goodness.",
+    gulpitDesc: "Exotic savoury spreads, chutneys, and tropical fruit fusions crafted with vacuum concentration and heart-healthy rice bran oil.",
     snackysTitle: "Snackys",
     snackysSubtitle: "Nature's Variety. Reimagined.",
-    snackysDesc: "Vacuum-cooked gourmet root and fruit chips bursting with rich natural crunch and up to 70% less oil.",
+    snackysDesc: "Vacuum-cooked gourmet root and fruit chips crisped in pure rice bran oil, bursting with rich natural crunch and up to 70% less oil.",
     exploreGulpit: "Explore Gulpit Brand",
     exploreSnackys: "Explore Snackys Brand",
   },
@@ -148,17 +199,18 @@ const en = {
     heroTitle1: "Pure",
     heroTitle2: "Flavour.",
     heroHighlight: "No Compromise.",
-    heroSubtitle: "Cold-pressed natural hydration and fruit spreads crafted from real fruits and botanicals. Clean labels, bold flavours, complete vitality.",
+    heroSubtitle: "Vacuum-concentrated natural hydration and fruit spreads crafted from real fruits and botanicals with heart-healthy rice bran oil. Clean labels, bold flavours, complete vitality.",
     badgeNatural: "100% Natural Ingredients",
     badgePreservatives: "Zero Preservatives",
     badgeClean: "Clean Label Nutrition",
     exploreFlavours: "Explore Flavours",
     processEyebrow: "OUR PROCESS",
     processTitle: "From Nature to Nourishment.",
-    processDesc: "We source real ingredients, preserve their natural goodness, and craft every spread with care — no artificial additives, no shortcuts.",
+    processDesc: "We source real ingredients, utilize vacuum concentration and pure rice bran oil to preserve natural goodness, and craft every spread with care — no artificial additives, no shortcuts.",
     processBullets: [
       "Real Ingredients",
-      "Cold-Pressed Goodness",
+      "Low Temperature Vacuum Concentration",
+      "Heart-Friendly Rice Bran Oil",
       "Hygienic & Modern Production",
       "Quality Checked",
       "Clean Label, Always",
@@ -188,17 +240,18 @@ const en = {
     tagline: "Its Yummy",
     heroTitle1: "Crunch With",
     heroTitle2: "A Pure Heart.",
-    heroSubtitle: "Vacuum-cooked exotic fruit and root chips. Preserving authentic colour, fibre, and crisp taste with significantly less oil absorption.",
+    heroSubtitle: "Vacuum-cooked exotic fruit and root chips prepared in heart-healthy rice bran oil. Preserving authentic colour, fibre, and crisp taste with significantly less oil absorption.",
     badgeOil: "Up to 70% Less Oil",
     badgeSugar: "Zero Added Sugar",
     badgeVacuum: "Vacuum Cooked Crisp",
     exploreChips: "Explore Chip Collection",
     processEyebrow: "OUR PROCESS",
     processTitle: "Crafted by Nature. Crisped by Science.",
-    processDesc: "Low-temperature vacuum cooking locks in genuine nutrients, natural sugars, and irresistible crunch without burning or oxidation.",
+    processDesc: "Advanced vacuum concentration and vacuum frying with pure rice bran oil lock in genuine nutrients, natural flavours, and irresistible crunch without burning or oxidation.",
     processBullets: [
       "Organic Farm Roots & Fruits",
       "Low Temperature Vacuum Frying",
+      "Pure Rice Bran Oil (Gamma Oryzanol)",
       "High-Efficiency De-Oiling",
       "Natural Herb & Spice Dusting",
       "100% Nitrogen Flush Cans",

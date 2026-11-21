@@ -47,7 +47,7 @@ export default function GulpitPage() {
       category: "savoury",
       desc: "A refreshing blend of grated coconut, green chilli and curry leaf.",
       image: "/brands/gulpit/coconut_chilli_chutney.png",
-      ingredients: "Fresh Coconut, Green Chilli, Curry Leaf, Cold-Pressed Oil",
+      ingredients: "Fresh Coconut, Green Chilli, Curry Leaf, Pure Rice Bran Oil",
       pairings: "Dosa, idli, wraps, savoury rolls and dipping platters",
       accent: "#00BFFF",
     },

@@ -49,7 +49,7 @@ export default function SnackysPage() {
       tag: "ROOT CHIPS",
       desc: "Artisanal root chips with subtle mineral salt bringing out natural earthiness and sweetness.",
       image: "/brands/snackys/sweet_potato_chips.png",
-      ingredients: "Farm-Fresh Orange & Purple Sweet Potatoes, Cold-Pressed Oil, Himalayan Pink Salt",
+      ingredients: "Farm-Fresh Orange & Purple Sweet Potatoes, Pure Rice Bran Oil, Himalayan Pink Salt",
       pairings: "Healthy dipping platters, afternoon tea, guacamole, and guilt-free movie snacking",
       accent: "#ea580c",
       netVol: "125g",

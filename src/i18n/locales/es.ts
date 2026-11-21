@@ -124,6 +124,57 @@ const es: TranslationKeys = {
     ],
   },
   fmcg: {
+    vacuumRiceBran: {
+        "questionTitle": "¿Por qué Fritura al Vacío y Aceite de Salvado de Arroz?",
+        "questionSubtitle": "La combinación perfecta para alimentos más saludables, sabrosos y crujientes.",
+        "formulaBadge": "Tecnología al Vacío + Aceite de Salvado de Arroz = Lo Mejor de Ambos Mundos",
+        "vacuumHeading": "Beneficios de la Tecnología al Vacío",
+        "vacuumItems": [
+            {
+                "title": "Absorción Ultrabaja de Aceite",
+                "desc": "La cocción a baja presión garantiza aperitivos excepcionalmente crujientes con mucha menor grasa."
+            },
+            {
+                "title": "Procesamiento a Baja Temperatura",
+                "desc": "La concentración al vacío preserva colores vibrantes, texturas y nutrientes esenciales."
+            },
+            {
+                "title": "Mayor Retención Nutricional",
+                "desc": "Las vitaminas y antioxidantes permanecen en frutas y raíces sin oxidarse."
+            },
+            {
+                "title": "Menos Aceite y Bajas Calorías",
+                "desc": "Una opción ligera y de fácil digestión en comparación con la fritura convencional."
+            }
+        ],
+        "riceBranHeading": "Beneficios del Aceite de Salvado de Arroz",
+        "riceBranItems": [
+            {
+                "title": "Cardiosaludable (Gamma Oryzanol)",
+                "desc": "Rico en oryzanol natural y grasas buenas que respaldan el bienestar cardiovascular."
+            },
+            {
+                "title": "Poderosos Antioxidantes",
+                "desc": "Combate los radicales libres promoviendo vitalidad celular."
+            },
+            {
+                "title": "Rico en Vitamina E",
+                "desc": "Refuerza la inmunidad y el bienestar integral."
+            },
+            {
+                "title": "Perfil Lipídico Equilibrado (MUFA y PUFA)",
+                "desc": "Alto punto de humo y proporción dorada de ácidos grasos saludables."
+            }
+        ],
+        "advantageHeading": "La Ventaja Avinyates",
+        "advantageTags": [
+            "Sin Conservantes",
+            "Sin Azúcar Añadida",
+            "Naturalmente Saludable",
+            "Increíblemente Sabroso",
+            "Tecnología Inteligente. Bondad Natural."
+        ]
+    },
     eyebrow: "AVINYATES FMCG",
     tagline: "INSPIRANDO VIDA SALUDABLE",
     title: "REVOLUCIÓN DE ALIMENTOS LIMPIOS",
